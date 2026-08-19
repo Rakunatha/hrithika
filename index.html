@@ -1,50 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Reviews Research Presentation</title>
 
+<style>
+:root{
+--black:#0a0708;
+--panel:#151011;
+--cream:#efe6d8;
+--muted:#b9ada0;
+--gold:#c9a15a;
+--red:#8f1d24;
+--line:#382b2d;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+margin:0;
+width:100%;
+height:100%;
+background:var(--black);
+color:var(--cream);
+font-family:Arial,Helvetica,sans-serif;
+overflow:hidden;
+}
+
+.deck{
+position:relative;
+width:100vw;
+height:100vh;
+}
+
+.slide{
+position:absolute;
+inset:0;
+padding:7vh 9vw 90px;
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+transform:translateX(45px);
+pointer-events:none;
+overflow:auto;
+transition:opacity .4s ease,transform .4s ease;
+}
+
+.slide.active{
+opacity:1;
+transform:translateX(0);
+pointer-events:auto;
+}
+
+.content{
+width:100%;
+max-width:1050px;
+}
+
+.eyebrow{
+color:var(--gold);
+font:11px monospace;
+letter-spacing:.2em;
+margin-bottom:18px;
+}
+
+h1{
+font:clamp(36px,5vw,68px)/1.05 Georgia,"Times New Roman",serif;
+margin:0;
+}
+
+h2{
+font:clamp(22px,2.6vw,34px)/1.2 Georgia,"Times New Roman",serif;
+margin:0 0 16px;
+}
+
+.rule{
+width:65px;
+height:2px;
+background:var(--gold);
+margin:25px 0;
+}
+
+p{
+color:var(--muted);
+font-size:clamp(15px,1.5vw,20px);
+line-height:1.65;
+max-width:900px;
+}
+
+.metric{
+display:inline-block;
+margin-top:20px;
+border:1px solid var(--line);
+border-left:3px solid var(--red);
+padding:16px 22px;
+color:var(--gold);
+font:24px Georgia,serif;
+}
+
+.author-details{
+margin-top:24px;
+color:var(--cream);
+font-size:15px;
+line-height:1.65;
+}
+
+.author-details strong{
+color:var(--gold);
+font-family:monospace;
+font-size:11px;
+letter-spacing:.16em;
+text-transform:uppercase;
+}
+
+.author-details span{
+color:var(--muted);
+}
+
+.graph-wrap{
+width:100%;
+max-width:1150px;
+}
+
+.graph-card{
+background:var(--panel);
+border:1px solid var(--line);
+border-radius:6px;
+padding:16px;
+box-shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+.graph-card img{
+display:block;
+width:100%;
+height:auto;
+max-height:57vh;
+object-fit:contain;
+background:#fff;
+border-radius:3px;
+}
+
+.discussion{
+margin-top:14px;
+border-left:2px solid var(--gold);
+padding:10px 15px;
+color:var(--muted);
+font-size:14px;
+line-height:1.5;
+}
+
+.discussion strong{
+color:var(--cream);
+}
+
+.progress{
+position:fixed;
+top:0;
+left:0;
+height:3px;
+background:var(--red);
+width:0;
+z-index:50;
+transition:width .3s;
+}
+
+.counter{
+position:fixed;
+bottom:20px;
+left:30px;
+color:#8a744a;
+font:11px monospace;
+z-index:50;
+}
+
+.nav{
+position:fixed;
+right:22px;
+bottom:16px;
+display:flex;
+gap:8px;
+z-index:50;
+}
+
+.nav button{
+width:48px;
+height:48px;
+border-radius:50%;
+border:1px solid var(--line);
+background:var(--panel);
+color:var(--gold);
+font-size:21px;
+cursor:pointer;
+}
+
+.nav button:disabled{
+opacity:.25;
+cursor:not-allowed;
+}
+
+.dots{
+position:fixed;
+bottom:35px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:6px;
+z-index:50;
+}
+
+.dot{
+width:7px;
+height:7px;
+border:0;
+border-radius:5px;
+background:var(--line);
+padding:0;
+cursor:pointer;
+}
+
+.dot.active{
+width:20px;
+background:var(--gold);
+}
+
+@media(max-width:650px){
+
+.slide{
+padding:55px 18px 90px;
+align-items:flex-start;
+}
+
+h1{
+font-size:38px;
+}
+
+.graph-card img{
+max-height:48vh;
+}
+
+.counter{
+display:none;
+}
+
+.dots{
+max-width:45vw;
+overflow:hidden;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+<!-- =====================================================
+SLIDE 1
+===================================================== -->
+
+<section class="slide active">
+
+<div class="content">
+
+<div class="eyebrow">
 01 / 10
+</div>
+
+<h1>
 A Study on the Impact of Online Reviews on Consumer Purchase Decisions
+</h1>
 
-An empirical study examining how consumers evaluate, use and trust online reviews while making purchase decisions.
+<div class="rule"></div>
+
+<p>
+An empirical study examining how consumers evaluate,
+use and trust online reviews while making purchase
+decisions.
+</p>
+
+<div class="metric">
 Research Presentation
+</div>
+
+<div class="author-details">
+<strong>Author</strong><br>
+Hrithika Suri<br>
+<span>Hrithikasuri@gmail.com</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 2
+===================================================== -->
+
+<section class="slide">
+
+<div class="content">
+
+<div class="eyebrow">
 02 / 10
+</div>
+
+<h1>
 Study in Numbers
+</h1>
 
-The research reports an empirical study based on 224 respondents from diverse demographic backgrounds. The study examines awareness and attitudes towards online reviews across demographic and behavioural variables.
+<div class="rule"></div>
+
+<p>
+The research reports an empirical study based on
+224 respondents from diverse demographic backgrounds.
+The study examines awareness and attitudes towards
+online reviews across demographic and behavioural
+variables.
+</p>
+
+<div class="metric">
 224 Respondents
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 3
+===================================================== -->
+
+<section class="slide">
+
+<div class="content">
+
+<div class="eyebrow">
 03 / 10
+</div>
+
+<h1>
 Research Methodology
+</h1>
 
-The study uses a structured questionnaire and empirical analysis. The questionnaire examines demographic characteristics together with respondents' perceptions and behaviour concerning online reviews.
+<div class="rule"></div>
+
+<p>
+The study uses a structured questionnaire and
+empirical analysis. The questionnaire examines
+demographic characteristics together with respondents'
+perceptions and behaviour concerning online reviews.
+</p>
+
+<div class="metric">
 Primary Empirical Study
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 4
+===================================================== -->
+
+<section class="slide">
+
+<div class="content">
+
+<div class="eyebrow">
 04 / 10
+</div>
+
+<h1>
 What the Results Examine
+</h1>
 
-The results examine factors influencing evaluation of online reviews, whether reviews help consumers make informed purchase decisions, their importance as a source of product information, review-reading behaviour before purchases, perceived credibility and consumer trust.
+<div class="rule"></div>
+
+<p>
+The results examine factors influencing evaluation
+of online reviews, whether reviews help consumers make
+informed purchase decisions, their importance as a
+source of product information, review-reading behaviour
+before purchases, perceived credibility and consumer
+trust.
+</p>
+
+<div class="metric">
 Five Key Result Themes
-05 / 10
-Figure 1 — Age-wise: Greatest Influence on Evaluation of Online Reviews
-￼
-Brief result & discussion: The result highlights verified buyer reviews as an important influence in evaluating online reviews, with the 46–50 group showing the strongest response in the reported age-wise distribution.
-06 / 10
-Figure 8 — Age-wise: Online Reviews Help Make Informed Purchase Decisions
-￼
-Brief result & discussion: The result shows how respondents across age groups perceive the usefulness of online reviews in making informed purchase decisions, with the 46–50 group showing the strongest reported neutral response.
-07 / 10
-Figure 15 — Age-wise: Online Reviews as an Important Source of Product Information
-￼
-Brief result & discussion: The result examines whether respondents regard online reviews as an important source of product information, with the 46–50 group showing the strongest reported neutral response.
-08 / 10
-Figure 22 — Age-wise: Usually Read Online Reviews Before Purchasing
-￼
-Brief result & discussion: The result indicates the extent to which respondents read online reviews before purchasing. The 46–50 group shows the strongest reported agreement in the age-wise distribution.
-09 / 10
-Figure 29 — Age-wise: Perceived Credibility of Online Reviews
-￼
-Brief result & discussion: The result examines perceived credibility of online reviews. The 46–50 group shows the strongest reported moderate-credibility response.
-10 / 10
-Conclusion
+</div>
 
-Overall, the findings indicate variation in awareness and attitudes towards online reviews across demographic groups. The study identifies differences in how consumers evaluate, use and trust online reviews when making purchase decisions.
-The findings should also be interpreted in light of the study's stated limitations, including sample size and geographic coverage.
-Results & Discussion
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 5 — FIGURE 1
+===================================================== -->
+
+<section class="slide">
+
+<div class="graph-wrap">
+
+<div class="eyebrow">
+05 / 10
+</div>
+
+<h2>
+Figure 1 — Age-wise: Greatest Influence on Evaluation
+of Online Reviews
+</h2>
+
+<div class="graph-card">
+
+<img
+src="data:image/png;base64,PASTE_THE_EXACT_FIGURE_1_BASE64_DATA_HERE"
+alt="Figure 1 - Age-wise distribution"
+>
+
+</div>
+
+<div class="discussion">
+
+<strong>
+Brief result &amp; discussion:
+</strong>
+
+The research paper reports the age-wise distribution
+of the factor having the greatest influence on evaluation
+of online reviews. The figure indicates the differing
+patterns of responses across the age groups.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 6 — FIGURE 8
+===================================================== -->
+
+<section class="slide">
+
+<div class="graph-wrap">
+
+<div class="eyebrow">
+06 / 10
+</div>
+
+<h2>
+Figure 8 — Age-wise: Online Reviews Help Make
+Informed Purchase Decisions
+</h2>
+
+<div class="graph-card">
+
+<img
+src="data:image/png;base64,PASTE_THE_EXACT_FIGURE_8_BASE64_DATA_HERE"
+alt="Figure 8 - Reviews help make informed purchase decisions"
+>
+
+</div>
+
+<div class="discussion">
+
+<strong>
+Brief result &amp; discussion:
+</strong>
+
+The figure presents the age-wise responses concerning
+whether online reviews help respondents make informed
+purchase decisions.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 7 — FIGURE 15
+===================================================== -->
+
+<section class="slide">
+
+<div class="graph-wrap">
+
+<div class="eyebrow">
+07 / 10
+</div>
+
+<h2>
+Figure 15 — Age-wise: Online Reviews as an Important
+Source of Product Information
+</h2>
+
+<div class="graph-card">
+
+<img
+src="data:image/png;base64,PASTE_THE_EXACT_FIGURE_15_BASE64_DATA_HERE"
+alt="Figure 15 - Online reviews as product information"
+>
+
+</div>
+
+<div class="discussion">
+
+<strong>
+Brief result &amp; discussion:
+</strong>
+
+The figure presents the age-wise distribution of
+responses regarding online reviews as an important
+source of product information.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 8 — FIGURE 22
+===================================================== -->
+
+<section class="slide">
+
+<div class="graph-wrap">
+
+<div class="eyebrow">
+08 / 10
+</div>
+
+<h2>
+Figure 22 — Age-wise: Usually Read Online Reviews
+Before Purchasing
+</h2>
+
+<div class="graph-card">
+
+<img
+src="data:image/png;base64,PASTE_THE_EXACT_FIGURE_22_BASE64_DATA_HERE"
+alt="Figure 22 - Reading online reviews before purchasing"
+>
+
+</div>
+
+<div class="discussion">
+
+<strong>
+Brief result &amp; discussion:
+</strong>
+
+The figure presents the age-wise responses concerning
+whether respondents usually read online reviews before
+purchasing a product.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 9 — FIGURE 29
+===================================================== -->
+
+<section class="slide">
+
+<div class="graph-wrap">
+
+<div class="eyebrow">
+09 / 10
+</div>
+
+<h2>
+Figure 29 — Age-wise: Perceived Credibility of
+Online Reviews
+</h2>
+
+<div class="graph-card">
+
+<img
+src="data:image/png;base64,PASTE_THE_EXACT_FIGURE_29_BASE64_DATA_HERE"
+alt="Figure 29 - Perceived credibility of online reviews"
+>
+
+</div>
+
+<div class="discussion">
+
+<strong>
+Brief result &amp; discussion:
+</strong>
+
+The figure presents the age-wise distribution of
+respondents' perceptions concerning the credibility
+of online reviews.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SLIDE 10
+===================================================== -->
+
+<section class="slide">
+
+<div class="content">
+
+<div class="eyebrow">
+10 / 10
+</div>
+
+<h1>
+Conclusion
+</h1>
+
+<div class="rule"></div>
+
+<p>
+Overall, the findings indicate variation in awareness
+and attitudes towards online reviews across demographic
+groups. The study identifies differences in how
+consumers evaluate, use and trust online reviews when
+making purchase decisions.
+</p>
+
+<p>
+The findings should also be interpreted in light of
+the study's stated limitations, including sample size
+and geographic coverage.
+</p>
+
+<div class="metric">
+Results &amp; Discussion
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<div class="counter" id="counter">
 01 / 10
+</div>
+
+<div class="dots" id="dots"></div>
+
+
+<div class="nav">
+
+<button id="prev" aria-label="Previous slide">
 ←
+</button>
+
+<button id="next" aria-label="Next slide">
 →
+</button>
+
+</div>
+
+
+<script>
+
+const slides =
+[...document.querySelectorAll(".slide")];
+
+const prev =
+document.getElementById("prev");
+
+const next =
+document.getElementById("next");
+
+const progress =
+document.getElementById("progress");
+
+const counter =
+document.getElementById("counter");
+
+const dotsBox =
+document.getElementById("dots");
+
+let current = 0;
+
+let locked = false;
+
+
+/* CREATE DOTS */
+
+slides.forEach((slide,index)=>{
+
+const dot =
+document.createElement("button");
+
+dot.className =
+"dot" + (index === 0 ? " active" : "");
+
+dot.setAttribute(
+"aria-label",
+"Go to slide " + (index + 1)
+);
+
+dot.onclick =
+()=>goToSlide(index);
+
+dotsBox.appendChild(dot);
+
+});
+
+
+const dots =
+[...document.querySelectorAll(".dot")];
+
+
+/* UPDATE */
+
+function updatePresentation(){
+
+slides.forEach((slide,index)=>{
+
+slide.classList.toggle(
+"active",
+index === current
+);
+
+});
+
+dots.forEach((dot,index)=>{
+
+dot.classList.toggle(
+"active",
+index === current
+);
+
+});
+
+prev.disabled =
+current === 0;
+
+next.disabled =
+current === slides.length - 1;
+
+progress.style.width =
+(
+((current + 1) / slides.length) * 100
+) + "%";
+
+counter.textContent =
+String(current + 1).padStart(2,"0")
++
+" / "
++
+String(slides.length).padStart(2,"0");
+
+}
+
+
+/* GO TO SLIDE */
+
+function goToSlide(index){
+
+if(locked){
+return;
+}
+
+index =
+Math.max(
+0,
+Math.min(
+slides.length - 1,
+index
+)
+);
+
+if(index === current){
+return;
+}
+
+current = index;
+
+updatePresentation();
+
+locked = true;
+
+setTimeout(
+()=>{
+locked = false;
+},
+420
+);
+
+}
+
+
+/* BUTTONS */
+
+prev.onclick =
+()=>goToSlide(current - 1);
+
+next.onclick =
+()=>goToSlide(current + 1);
+
+
+/* KEYBOARD */
+
+document.addEventListener(
+"keydown",
+event=>{
+
+if(
+[
+"ArrowRight",
+"ArrowDown",
+"PageDown",
+" "
+].includes(event.key)
+){
+
+event.preventDefault();
+
+goToSlide(current + 1);
+
+}
+
+if(
+[
+"ArrowLeft",
+"ArrowUp",
+"PageUp"
+].includes(event.key)
+){
+
+event.preventDefault();
+
+goToSlide(current - 1);
+
+}
+
+if(event.key === "Home"){
+
+event.preventDefault();
+
+goToSlide(0);
+
+}
+
+if(event.key === "End"){
+
+event.preventDefault();
+
+goToSlide(slides.length - 1);
+
+}
+
+}
+);
+
+
+/* TOUCH / SWIPE */
+
+let startX = 0;
+let startY = 0;
+
+document.addEventListener(
+"touchstart",
+event=>{
+
+if(event.touches.length !== 1){
+return;
+}
+
+startX =
+event.touches[0].clientX;
+
+startY =
+event.touches[0].clientY;
+
+},
+{
+passive:true
+}
+);
+
+document.addEventListener(
+"touchend",
+event=>{
+
+if(event.changedTouches.length !== 1){
+return;
+}
+
+const endX =
+event.changedTouches[0].clientX;
+
+const endY =
+event.changedTouches[0].clientY;
+
+const dx =
+endX - startX;
+
+const dy =
+endY - startY;
+
+if(
+Math.abs(dx) > 50 &&
+Math.abs(dx) > Math.abs(dy)
+){
+
+goToSlide(
+current + (dx < 0 ? 1 : -1)
+);
+
+}
+
+},
+{
+passive:true
+}
+);
+
+
+/* MOUSE WHEEL */
+
+let wheelLocked = false;
+
+document.addEventListener(
+"wheel",
+event=>{
+
+if(wheelLocked){
+return;
+}
+
+wheelLocked = true;
+
+goToSlide(
+current + (event.deltaY > 0 ? 1 : -1)
+);
+
+setTimeout(
+()=>{
+wheelLocked = false;
+},
+600
+);
+
+},
+{
+passive:true
+}
+);
+
+
+/* INITIALISE */
+
+updatePresentation();
+
+</script>
+
+</body>
+</html>
