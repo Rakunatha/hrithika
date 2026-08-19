@@ -2,55 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
-
-<title>
-    The Impact of Online Reviews on Consumer Purchase Decisions
-</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Cormorant+Garamond:ital@0;1&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
-      rel="stylesheet">
+<title>Online Reviews Research Presentation</title>
 
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root {
-    --ink: #0a0708;
-    --panel: #130f10;
-    --panel-2: #1b1516;
-
-    --hairline: #33282a;
-
-    --red: #8f1d24;
-    --red-bright: #b8262e;
-
+    --black: #0a0708;
+    --panel: #151011;
+    --cream: #efe6d8;
+    --muted: #b9ada0;
     --gold: #c9a15a;
-    --gold-soft: #8a744a;
-
-    --parchment: #efe6d8;
-    --parchment-dim: #b9ada0;
-
-    --white: #fffaf1;
-
-    --shadow:
-        0 30px 80px -20px rgba(0,0,0,.7);
+    --red: #8f1d24;
+    --line: #382b2d;
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 * {
     box-sizing: border-box;
@@ -58,2918 +23,800 @@
 
 html,
 body {
+    margin: 0;
     width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-
-/* =========================================================
-   BODY
-========================================================= */
-
-body {
-
-    background:
-        radial-gradient(
-            ellipse at 15% -10%,
-            rgba(143,29,36,.25),
-            transparent 45%
-        ),
-
-        radial-gradient(
-            ellipse at 100% 110%,
-            rgba(201,161,90,.10),
-            transparent 45%
-        ),
-
-        var(--ink);
-
-    color: var(--parchment);
-
-    font-family: 'Inter', sans-serif;
-
+    background: var(--black);
+    color: var(--cream);
+    font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
-
-    -webkit-font-smoothing: antialiased;
-
-    text-rendering: optimizeLegibility;
 }
-
-
-/* =========================================================
-   DECK
-========================================================= */
 
 .deck {
-
-    position: relative;
-
     width: 100vw;
     height: 100vh;
-    height: 100dvh;
+    position: relative;
 }
 
-
-/* =========================================================
+/* =========================
    SLIDES
-========================================================= */
+========================= */
 
 .slide {
-
     position: absolute;
-
     inset: 0;
+
+    padding:
+        clamp(35px, 7vw, 100px)
+        clamp(24px, 9vw, 140px)
+        90px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    padding:
-        clamp(28px, 6vw, 100px)
-        clamp(24px, 8vw, 140px)
-        90px;
-
     opacity: 0;
-
     transform: translateX(45px);
-
-    transition:
-        opacity .45s cubic-bezier(.22,.61,.36,1),
-        transform .45s cubic-bezier(.22,.61,.36,1);
 
     pointer-events: none;
 
     overflow-y: auto;
-    overflow-x: hidden;
 
-    scrollbar-width: thin;
-    scrollbar-color: var(--gold-soft) transparent;
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
 .slide.active {
-
     opacity: 1;
-
     transform: translateX(0);
-
     pointer-events: auto;
 }
 
-.slide.prev {
+/* =========================
+   NORMAL CONTENT
+========================= */
 
-    transform: translateX(-45px);
+.content-card {
+    max-width: 1000px;
 }
 
-
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
-
 .eyebrow {
-
-    font-family: 'DM Mono', monospace;
-
-    letter-spacing: .28em;
-
-    text-transform: uppercase;
-
-    font-size: 11.5px;
-
     color: var(--gold);
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
+    font-family: monospace;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+    text-transform: uppercase;
     margin-bottom: 18px;
 }
 
-.eyebrow::before {
-
-    content: "";
-
-    width: 26px;
-
-    height: 1px;
-
-    background: var(--gold);
-
-    display: inline-block;
-}
-
-
-h1,
-h2,
-h3 {
-
-    font-family: 'Fraunces', serif;
-
-    font-weight: 600;
-
-    margin: 0;
-
-    color: var(--parchment);
-
-    line-height: 1.05;
-}
-
-
 h1 {
-
-    font-size:
-        clamp(34px, 4.6vw, 62px);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.05;
+    margin: 0;
+    max-width: 1100px;
 }
-
-
-h2 {
-
-    font-size:
-        clamp(25px, 3vw, 38px);
-}
-
-
-h3 {
-
-    font-size: 22px;
-}
-
-
-p {
-
-    line-height: 1.65;
-
-    color: var(--parchment-dim);
-
-    font-weight: 400;
-}
-
-
-.accent {
-
-    color: var(--gold);
-}
-
 
 .rule {
-
-    width: 64px;
-
+    width: 65px;
     height: 2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            transparent
-        );
-
-    margin: 22px 0;
+    background: var(--gold);
+    margin: 25px 0;
 }
 
-
-/* =========================================================
-   TITLE
-========================================================= */
-
-.titlewrap {
-
-    max-width: 920px;
+p {
+    color: var(--muted);
+    font-size: clamp(15px, 1.5vw, 20px);
+    line-height: 1.65;
+    max-width: 900px;
 }
 
+.metric {
+    display: inline-block;
+    margin-top: 25px;
 
-.sub {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--red);
 
-    font-family: 'Cormorant Garamond', serif;
-
-    font-style: italic;
-
-    color: var(--gold-soft);
-
-    font-size:
-        clamp(17px, 1.6vw, 22px);
-
-    margin-top: 16px;
-
-    max-width: 720px;
-}
-
-
-.author-card {
-
-    margin-top: 48px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    border-top:
-        1px solid var(--hairline);
-
-    padding-top: 24px;
-
-    max-width: 520px;
-}
-
-
-.seal {
-
-    width: 52px;
-    height: 52px;
-
-    border-radius: 50%;
-
-    border:
-        1.5px solid var(--gold);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-family: 'Fraunces', serif;
+    padding: 18px 24px;
 
     color: var(--gold);
 
-    font-size: 20px;
-
-    flex-shrink: 0;
-
-    position: relative;
+    font-family: Georgia, serif;
+    font-size: 25px;
 }
 
+/* =========================
+   GRAPH SLIDES
+========================= */
 
-.seal::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -6px;
-
-    border:
-        1px solid var(--gold-soft);
-
-    border-radius: 50%;
-
-    opacity: .4;
+.graph-wrapper {
+    width: 100%;
+    max-width: 1150px;
 }
 
+.graph-title {
+    font-family: Georgia, "Times New Roman", serif;
 
-.author-name {
+    font-size: clamp(20px, 2.2vw, 30px);
 
-    font-family: 'Fraunces', serif;
+    line-height: 1.25;
 
-    font-size: 19px;
+    margin-bottom: 15px;
 
-    color: var(--parchment);
+    color: var(--cream);
 }
 
-
-.author-meta {
-
-    font-family: 'DM Mono', monospace;
-
-    font-size: 12px;
-
-    color: var(--parchment-dim);
-
-    margin-top: 3px;
-}
-
-
-/* =========================================================
-   GRIDS
-========================================================= */
-
-.grid {
-
-    display: grid;
-
-    gap: 16px;
-}
-
-
-.g2 {
-
-    grid-template-columns:
-        repeat(2, 1fr);
-}
-
-
-.g3 {
-
-    grid-template-columns:
-        repeat(3, 1fr);
-}
-
-
-.g4 {
-
-    grid-template-columns:
-        repeat(4, 1fr);
-}
-
-
-/* =========================================================
-   CARDS
-========================================================= */
-
-.card {
+.graph-card {
+    width: 100%;
 
     background:
         linear-gradient(
-            160deg,
+            145deg,
             var(--panel),
-            var(--panel-2)
+            #1c1516
         );
 
-    border:
-        1px solid var(--hairline);
-
-    border-radius: 4px;
-
-    padding: 20px;
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-
-.card::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 3px;
-    height: 100%;
-
-    background: var(--red);
-}
-
-
-.stat-num {
-
-    font-family: 'Fraunces', serif;
-
-    font-size:
-        clamp(28px, 2.6vw, 40px);
-
-    color: var(--gold);
-
-    font-weight: 600;
-}
-
-
-.stat-label {
-
-    font-size: 12.5px;
-
-    color: var(--parchment-dim);
-
-    margin-top: 6px;
-
-    line-height: 1.45;
-}
-
-
-/* =========================================================
-   TWO COLUMN
-========================================================= */
-
-.twocol {
-
-    display: grid;
-
-    grid-template-columns:
-        1.1fr .9fr;
-
-    gap: 60px;
-
-    align-items: center;
-}
-
-
-/* =========================================================
-   FORMAL LIST
-========================================================= */
-
-ul.formal {
-
-    list-style: none;
-
-    padding: 0;
-
-    margin: 0;
-}
-
-
-ul.formal li {
-
-    display: flex;
-
-    gap: 14px;
-
-    padding: 11px 0;
-
-    border-bottom:
-        1px solid var(--hairline);
-
-    color: var(--parchment);
-
-    font-size: 15.5px;
-
-    line-height: 1.55;
-}
-
-
-ul.formal li:last-child {
-
-    border-bottom: none;
-}
-
-
-ul.formal li .num {
-
-    font-family: 'DM Mono', monospace;
-
-    color: var(--red-bright);
-
-    font-size: 13px;
-
-    padding-top: 2px;
-
-    flex-shrink: 0;
-}
-
-
-/* =========================================================
-   CHART SHELL
-========================================================= */
-
-.chart-shell {
-
-    background:
-        linear-gradient(
-            160deg,
-            var(--panel),
-            var(--panel-2)
-        );
-
-    border:
-        1px solid var(--hairline);
+    border: 1px solid var(--line);
 
     border-radius: 6px;
 
-    padding: 22px;
+    padding: 18px;
 
-    box-shadow: var(--shadow);
-
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin-top: 12px;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.45);
 }
 
+/*
+    IMPORTANT:
 
-.chart-title {
+    These five graph images are embedded directly
+    into the HTML as Base64 images.
 
-    font-family: 'Fraunces', serif;
+    Replace ONLY the five image strings below
+    if you ever want to use different images.
+*/
 
-    color: var(--parchment);
-
-    font-size: 20px;
-
-    margin-bottom: 15px;
-}
-
-
-/* =========================================================
-   SVG GRAPHS
-========================================================= */
-
-.graph-image {
-
+.actual-graph {
     display: block;
 
     width: 100%;
 
     height: auto;
 
-    border-radius: 4px;
+    max-height: 58vh;
+
+    object-fit: contain;
+
+    background: white;
+
+    border-radius: 3px;
 }
-
-
-/* =========================================================
-   FINDING NOTE
-========================================================= */
-
-.finding-note {
-
-    margin-top: 18px;
-
-    display: flex;
-
-    gap: 12px;
-
-    align-items: flex-start;
-
-    font-size: 14px;
-
-    color: var(--parchment-dim);
-
-    border-left:
-        2px solid var(--gold);
-
-    padding-left: 14px;
-
-    max-width: 1050px;
-}
-
-
-.finding-note b {
-
-    color: var(--parchment);
-
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   DISCUSSION
-========================================================= */
 
 .discussion {
+    max-width: 1100px;
 
-    background:
-        linear-gradient(
-            160deg,
-            var(--panel),
-            var(--panel-2)
-        );
+    margin-top: 16px;
 
-    border:
-        1px solid var(--hairline);
+    border-left: 2px solid var(--gold);
 
-    border-left:
-        3px solid var(--gold);
+    padding: 12px 16px;
 
-    padding: 20px 24px;
+    color: var(--muted);
 
-    max-width: 980px;
-
-    margin-top: 20px;
-}
-
-
-.discussion p {
-
-    margin: 0;
+    line-height: 1.55;
 
     font-size: 14px;
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.foot {
-
-    position: fixed;
-
-    bottom: 18px;
-
-    left: 0;
-    right: 0;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding:
-        0
-        clamp(24px, 8vw, 140px);
-
-    font-family: 'DM Mono', monospace;
-
-    font-size: 10px;
-
-    color: var(--gold-soft);
-
-    letter-spacing: .08em;
-
-    z-index: 10;
-
-    pointer-events: none;
+.discussion strong {
+    color: var(--cream);
 }
 
-
-/* =========================================================
-   PROGRESS
-========================================================= */
+/* =========================
+   TOP PROGRESS
+========================= */
 
 .progress {
-
     position: fixed;
 
     top: 0;
     left: 0;
 
-    height: 2px;
+    height: 3px;
+
+    background: var(--red);
 
     width: 0;
 
-    background: var(--red-bright);
+    z-index: 100;
 
-    transition:
-        width .35s ease;
+    transition: width 0.3s ease;
+}
+
+/* =========================
+   SLIDE COUNTER
+========================= */
+
+.counter {
+    position: fixed;
+
+    bottom: 20px;
+    left: 30px;
+
+    color: #8a744a;
+
+    font: 11px monospace;
+
+    letter-spacing: 0.1em;
 
     z-index: 100;
 }
 
+/* =========================
+   NAVIGATION BUTTONS
+========================= */
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.navbtns {
-
+.nav {
     position: fixed;
 
-    bottom: 18px;
-
-    right: 20px;
-
-    z-index: 100;
+    right: 22px;
+    bottom: 16px;
 
     display: flex;
 
-    gap: 9px;
+    gap: 8px;
+
+    z-index: 100;
 }
 
-
-.navbtn {
-
-    width: 46px;
-    height: 46px;
+.nav button {
+    width: 48px;
+    height: 48px;
 
     border-radius: 50%;
 
-    background:
-        rgba(19,15,16,.92);
+    border: 1px solid var(--line);
 
-    border:
-        1px solid var(--hairline);
+    background: var(--panel);
 
     color: var(--gold);
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
+    font-size: 21px;
 
     cursor: pointer;
 
-    backdrop-filter: blur(8px);
-
     transition:
-        border-color .2s,
-        transform .15s,
-        opacity .2s,
-        background .2s;
-
-    font-size: 17px;
-
-    user-select: none;
-
-    -webkit-tap-highlight-color: transparent;
+        background 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
 }
 
-
-.navbtn:hover {
-
-    border-color: var(--gold);
-
-    transform: scale(1.06);
-
-    background:
-        rgba(35,27,28,.95);
+.nav button:hover:not(:disabled) {
+    background: #241a1c;
+    transform: scale(1.05);
 }
 
-
-.navbtn:active {
-
-    transform: scale(.92);
-}
-
-
-.navbtn:disabled {
-
-    opacity: .25;
-
+.nav button:disabled {
+    opacity: 0.25;
     cursor: not-allowed;
-
-    transform: none;
 }
 
-
-/* =========================================================
-   DOTS
-========================================================= */
+/* =========================
+   DOT NAVIGATION
+========================= */
 
 .dots {
-
     position: fixed;
 
-    bottom: 31px;
-
+    bottom: 35px;
     left: 50%;
 
-    transform:
-        translateX(-50%);
-
-    z-index: 100;
+    transform: translateX(-50%);
 
     display: flex;
 
-    gap: 7px;
+    gap: 6px;
 
-    max-width: 45vw;
-
-    overflow: hidden;
+    z-index: 100;
 }
 
-
 .dot {
-
     width: 7px;
     height: 7px;
 
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background: var(--hairline);
-
     border: 0;
+
+    border-radius: 5px;
+
+    background: var(--line);
 
     padding: 0;
 
     cursor: pointer;
 
     transition:
-        all .25s ease;
+        width 0.2s ease,
+        background 0.2s ease;
 }
-
-
-.dot:hover {
-
-    background: var(--gold-soft);
-}
-
 
 .dot.active {
-
-    background: var(--gold);
-
     width: 20px;
-
-    border-radius: 4px;
+    background: var(--gold);
 }
 
+/* =========================
+   MOBILE
+========================= */
 
-/* =========================================================
-   NAVIGATION HINT
-========================================================= */
-
-.navigation-hint {
-
-    position: fixed;
-
-    top: 18px;
-
-    right: 22px;
-
-    z-index: 20;
-
-    font-family: 'DM Mono', monospace;
-
-    font-size: 9px;
-
-    letter-spacing: .08em;
-
-    color: var(--gold-soft);
-
-    opacity: .7;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .twocol {
-
-        grid-template-columns: 1fr;
-
-        gap: 25px;
-    }
-
-
-    .g4 {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-
-    .g3 {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    .chart-shell {
-
-        padding: 16px;
-    }
-}
-
-
-@media (max-width: 640px) {
+@media (max-width: 650px) {
 
     .slide {
-
         justify-content: flex-start;
 
         padding:
-            55px 18px 90px;
+            55px
+            18px
+            90px;
     }
 
-
-    .g2,
-    .g4 {
-
-        grid-template-columns: 1fr;
+    h1 {
+        font-size: 38px;
     }
 
-
-    .chart-shell {
-
-        padding: 12px;
+    .actual-graph {
+        max-height: 48vh;
     }
 
-
-    .finding-note {
-
-        font-size: 12.5px;
+    .counter {
+        display: none;
     }
-
-
-    .discussion {
-
-        padding: 16px;
-    }
-
-
-    .navbtns {
-
-        bottom: 14px;
-
-        right: 14px;
-    }
-
-
-    .navbtn {
-
-        width: 43px;
-
-        height: 43px;
-    }
-
 
     .dots {
-
-        bottom: 30px;
-
-        max-width: 42vw;
+        max-width: 45vw;
+        overflow: hidden;
     }
 
-
-    .foot {
-
-        display: none;
-    }
-
-
-    .navigation-hint {
-
-        display: none;
+    .discussion {
+        font-size: 13px;
     }
 }
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-button:focus-visible {
-
-    outline:
-        2px solid var(--gold);
-
-    outline-offset: 3px;
-}
-
 </style>
 </head>
 
 
 <body>
 
+<div class="progress" id="progress"></div>
 
-<!-- =======================================================
-     PROGRESS BAR
-======================================================= -->
-
-<div
-    class="progress"
-    id="progress">
-</div>
+<div class="deck" id="deck">
 
 
-<!-- =======================================================
-     PRESENTATION DECK
-======================================================= -->
+<!-- =====================================================
+     SLIDE 1
+===================================================== -->
 
-<div
-    class="deck"
-    id="deck">
+<section class="slide active">
 
+    <div class="content-card">
 
-<!-- =======================================================
-     SLIDE 1 — TITLE
-======================================================= -->
-
-<section
-    class="slide active"
-    id="slide-1">
-
-    <div class="eyebrow">
-        Research Presentation · 01 / 10
-    </div>
-
-
-    <div class="titlewrap">
+        <div class="eyebrow">
+            01 / 10
+        </div>
 
         <h1>
-
-            A Study on the Impact of
-
-            <br>
-
-            <span class="accent">
-                Online Reviews
-            </span>
-
-            on Consumer
-
-            <br>
-
-            Purchase Decisions
-
+            A Study on the Impact of Online Reviews
+            on Consumer Purchase Decisions
         </h1>
 
-
-        <p class="sub">
-
-            An empirical study of how consumers perceive,
-            evaluate and rely upon online reviews when making
-            purchase decisions.
-
-        </p>
-
-    </div>
-
-
-    <div class="author-card">
-
-        <div class="seal">
-            HS
-        </div>
-
-
-        <div>
-
-            <div class="author-name">
-                Hrithika Suri
-            </div>
-
-            <div class="author-meta">
-                RESEARCH PRESENTATION
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 2 — STUDY IN NUMBERS
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-2">
-
-    <div class="eyebrow">
-        02 / 10 — At a Glance
-    </div>
-
-
-    <h2>
-        Study in Numbers
-    </h2>
-
-
-    <div class="rule"></div>
-
-
-    <p style="max-width:760px;">
-
-        The study follows an empirical and descriptive research
-        design using structured questionnaires and a five-point
-        Likert scale. A total of 224 respondents were surveyed
-        through convenience sampling.
-
-    </p>
-
-
-    <div
-        class="grid g4"
-        style="margin-top:25px;">
-
-
-        <div class="card">
-
-            <div class="stat-num">
-                224
-            </div>
-
-            <div class="stat-label">
-                Respondents included in the empirical study
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="stat-num">
-                5
-            </div>
-
-            <div class="stat-label">
-                Point Likert scale used for attitudes and perceptions
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="stat-num">
-                SPSS
-            </div>
-
-            <div class="stat-label">
-                Statistical software used for data analysis
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="stat-num">
-                224
-            </div>
-
-            <div class="stat-label">
-                Completed responses forming the study sample
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 3 — METHODOLOGY
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-3">
-
-    <div class="eyebrow">
-        03 / 10 — Methodology
-    </div>
-
-
-    <div class="twocol">
-
-
-        <div>
-
-            <h2>
-
-                Empirical &amp;
-
-                <br>
-
-                Descriptive Design
-
-            </h2>
-
-
-            <div class="rule"></div>
-
-
-            <p>
-
-                Structured questionnaires were administered using
-                convenience sampling. The questionnaire incorporated
-                a five-point Likert scale to measure attitudes and
-                perceptions concerning online reviews.
-
-            </p>
-
-
-            <p>
-
-                Secondary sources included peer-reviewed journals,
-                government reports and statistical databases.
-                The study examined demographic and behavioural
-                variables including age, gender, educational
-                qualification, occupation, purchasing frequency
-                and review-platform usage.
-
-            </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-            <div class="card">
-
-                <div class="stat-num">
-                    224
-                </div>
-
-                <div class="stat-label">
-                    Total respondents
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="stat-num">
-                    5-point
-                </div>
-
-                <div class="stat-label">
-                    Likert-scale measurement
-                </div>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="stat-num">
-                    Empirical
-                </div>
-
-                <div class="stat-label">
-                    Primary research design
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 4 — KEY AREAS
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-4">
-
-    <div class="eyebrow">
-        04 / 10 — Key Areas Examined
-    </div>
-
-
-    <h2>
-        What the Study Examined
-    </h2>
-
-
-    <div class="rule"></div>
-
-
-    <ul
-        class="formal"
-        style="max-width:850px;">
-
-
-        <li>
-
-            <span class="num">
-                01
-            </span>
-
-            The factors that have the greatest influence on
-            consumers' evaluation of online reviews.
-
-        </li>
-
-
-        <li>
-
-            <span class="num">
-                02
-            </span>
-
-            Whether online reviews help consumers make informed
-            purchase decisions.
-
-        </li>
-
-
-        <li>
-
-            <span class="num">
-                03
-            </span>
-
-            Whether consumers consider online reviews an important
-            source of product information.
-
-        </li>
-
-
-        <li>
-
-            <span class="num">
-                04
-            </span>
-
-            Whether consumers normally read online reviews before
-            purchasing a product.
-
-        </li>
-
-
-        <li>
-
-            <span class="num">
-                05
-            </span>
-
-            How consumers perceive the credibility of online reviews.
-
-        </li>
-
-
-        <li>
-
-            <span class="num">
-                06
-            </span>
-
-            The level of trust consumers place in online reviews
-            while making a purchase.
-
-        </li>
-
-
-    </ul>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 5 — GRAPH 1
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-5">
-
-    <div class="eyebrow">
-        05 / 10 — Results
-    </div>
-
-
-    <h2>
-        Greatest Influence on Review Evaluation
-    </h2>
-
-
-    <p style="max-width:800px;">
-
-        The research paper reports the strongest observed subgroup
-        patterns for factors influencing consumers' evaluation of
-        online reviews.
-
-    </p>
-
-
-    <div class="chart-shell">
-
-
-        <div class="chart-title">
-            Factors Influencing Evaluation of Online Reviews
-        </div>
-
-
-        <!-- EMBEDDED GRAPH IMAGE -->
-
-        <svg
-            class="graph-image"
-            viewBox="0 0 1000 430"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Factors influencing evaluation of online reviews">
-
-
-            <rect
-                width="1000"
-                height="430"
-                fill="#130f10"/>
-
-
-            <text
-                x="500"
-                y="35"
-                text-anchor="middle"
-                fill="#c9a15a"
-                font-family="Inter,Arial,sans-serif"
-                font-size="16">
-
-                Strongest reported subgroup patterns
-
-            </text>
-
-
-            <!-- GRID -->
-
-            <line
-                x1="310"
-                y1="70"
-                x2="310"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="510"
-                y1="70"
-                x2="510"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="710"
-                y1="70"
-                x2="710"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="910"
-                y1="70"
-                x2="910"
-                y2="370"
-                stroke="#33282a"/>
-
-
-            <!-- LABELS -->
-
-            <text
-                x="300"
-                y="95"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Age 46–50 — Verified buyer review
-
-            </text>
-
-
-            <text
-                x="300"
-                y="155"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Female — Customer photos/videos
-
-            </text>
-
-
-            <text
-                x="300"
-                y="215"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                PG — Star ratings
-
-            </text>
-
-
-            <text
-                x="300"
-                y="275"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Private employed — Photos/videos
-
-            </text>
-
-
-            <text
-                x="300"
-                y="335"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Weekly purchasers — Written reviews
-
-            </text>
-
-
-            <!-- BARS -->
-
-            <rect
-                x="320"
-                y="78"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="138"
-                width="531"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="198"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="258"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="318"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <!-- VALUES -->
-
-            <text
-                x="925"
-                y="96"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="866"
-                y="156"
-                fill="#c9a15a"
-                font-size="13">
-
-                90%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="216"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="276"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="336"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-        </svg>
-
-    </div>
-
-
-    <div class="finding-note">
-
-        <span>
-
-            <b>
-                Result &amp; discussion:
-            </b>
-
-            The reported patterns show that different consumer
-            groups respond to different review cues. Verified-buyer
-            reviews were particularly prominent for respondents aged
-            46–50, while customer photos/videos were especially
-            prominent among female respondents.
-
-        </span>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 6 — GRAPH 2
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-6">
-
-    <div class="eyebrow">
-        06 / 10 — Results
-    </div>
-
-
-    <h2>
-        Online Reviews and Informed Decisions
-    </h2>
-
-
-    <p style="max-width:800px;">
-
-        The paper reports strong subgroup patterns in responses to
-        whether online reviews help consumers make informed
-        purchase decisions.
-
-    </p>
-
-
-    <div class="chart-shell">
-
-
-        <div class="chart-title">
-            Reviews Help Consumers Make Informed Purchase Decisions
-        </div>
-
-
-        <!-- EMBEDDED GRAPH IMAGE -->
-
-        <svg
-            class="graph-image"
-            viewBox="0 0 1000 430"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Online reviews helping consumers make informed decisions">
-
-
-            <rect
-                width="1000"
-                height="430"
-                fill="#130f10"/>
-
-
-            <text
-                x="500"
-                y="35"
-                text-anchor="middle"
-                fill="#c9a15a"
-                font-family="Inter,Arial,sans-serif"
-                font-size="16">
-
-                Strongest reported subgroup patterns
-
-            </text>
-
-
-            <line
-                x1="310"
-                y1="70"
-                x2="310"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="510"
-                y1="70"
-                x2="510"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="710"
-                y1="70"
-                x2="710"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="910"
-                y1="70"
-                x2="910"
-                y2="370"
-                stroke="#33282a"/>
-
-
-            <text
-                x="300"
-                y="95"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Female — Agree
-
-            </text>
-
-
-            <text
-                x="300"
-                y="155"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                PG — Agree
-
-            </text>
-
-
-            <text
-                x="300"
-                y="215"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Weekly purchasers — Agree
-
-            </text>
-
-
-            <text
-                x="300"
-                y="275"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Age 46–50 — Neutral
-
-            </text>
-
-
-            <text
-                x="300"
-                y="335"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Private employed — Neutral
-
-            </text>
-
-
-            <rect
-                x="320"
-                y="78"
-                width="531"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="138"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="198"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="258"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="318"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <text
-                x="866"
-                y="96"
-                fill="#c9a15a"
-                font-size="13">
-
-                90%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="156"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="216"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="276"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="336"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-        </svg>
-
-    </div>
-
-
-    <div class="finding-note">
-
-        <span>
-
-            <b>
-                Result &amp; discussion:
-            </b>
-
-            The results indicate a generally positive perception
-            among several groups, particularly female, PG and weekly
-            online purchasers. At the same time, some groups reported
-            neutrality, showing that the usefulness of reviews is not
-            perceived uniformly across all demographic categories.
-
-        </span>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 7 — GRAPH 3
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-7">
-
-    <div class="eyebrow">
-        07 / 10 — Results
-    </div>
-
-
-    <h2>
-        Reading Reviews Before Purchasing
-    </h2>
-
-
-    <p style="max-width:800px;">
-
-        The study examined whether consumers normally read online
-        reviews before purchasing a product.
-
-    </p>
-
-
-    <div class="chart-shell">
-
-
-        <div class="chart-title">
-            Consumers Reading Reviews Before Purchasing
-        </div>
-
-
-        <!-- EMBEDDED GRAPH IMAGE -->
-
-        <svg
-            class="graph-image"
-            viewBox="0 0 1000 430"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Consumers reading reviews before purchasing">
-
-
-            <rect
-                width="1000"
-                height="430"
-                fill="#130f10"/>
-
-
-            <text
-                x="500"
-                y="35"
-                text-anchor="middle"
-                fill="#c9a15a"
-                font-family="Inter,Arial,sans-serif"
-                font-size="16">
-
-                Strongest reported agreement patterns
-
-            </text>
-
-
-            <line
-                x1="310"
-                y1="70"
-                x2="310"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="510"
-                y1="70"
-                x2="510"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="710"
-                y1="70"
-                x2="710"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="910"
-                y1="70"
-                x2="910"
-                y2="370"
-                stroke="#33282a"/>
-
-
-            <text
-                x="300"
-                y="95"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Age 46–50 — Agree
-
-            </text>
-
-
-            <text
-                x="300"
-                y="155"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Female — Agree
-
-            </text>
-
-
-            <text
-                x="300"
-                y="215"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                PG — Strongly agree
-
-            </text>
-
-
-            <text
-                x="300"
-                y="275"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Monthly purchasers — Agree
-
-            </text>
-
-
-            <text
-                x="300"
-                y="335"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Other platform users — Strongly agree
-
-            </text>
-
-
-            <rect
-                x="320"
-                y="78"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="138"
-                width="554"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="198"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="258"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="318"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <text
-                x="925"
-                y="96"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="889"
-                y="156"
-                fill="#c9a15a"
-                font-size="13">
-
-                94%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="216"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="276"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="336"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-        </svg>
-
-    </div>
-
-
-    <div class="finding-note">
-
-        <span>
-
-            <b>
-                Result &amp; discussion:
-            </b>
-
-            Reading reviews before purchasing appears to be a
-            prominent behaviour in several reported subgroups.
-            Female respondents showed 94% agreement, while the
-            reported strongest patterns for age 46–50, PG respondents
-            and monthly purchasers reached 100%.
-
-        </span>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 8 — GRAPH 4
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-8">
-
-    <div class="eyebrow">
-        08 / 10 — Results
-    </div>
-
-
-    <h2>
-        Perceived Credibility of Online Reviews
-    </h2>
-
-
-    <p style="max-width:800px;">
-
-        Respondents were also asked how they generally perceive the
-        credibility of online reviews.
-
-    </p>
-
-
-    <div class="chart-shell">
-
-
-        <div class="chart-title">
-            Perceived Credibility of Online Reviews
-        </div>
-
-
-        <!-- EMBEDDED GRAPH IMAGE -->
-
-        <svg
-            class="graph-image"
-            viewBox="0 0 1000 430"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Perceived credibility of online reviews">
-
-
-            <rect
-                width="1000"
-                height="430"
-                fill="#130f10"/>
-
-
-            <text
-                x="500"
-                y="35"
-                text-anchor="middle"
-                fill="#c9a15a"
-                font-family="Inter,Arial,sans-serif"
-                font-size="16">
-
-                Strongest reported subgroup patterns
-
-            </text>
-
-
-            <line
-                x1="310"
-                y1="70"
-                x2="310"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="510"
-                y1="70"
-                x2="510"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="710"
-                y1="70"
-                x2="710"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="910"
-                y1="70"
-                x2="910"
-                y2="370"
-                stroke="#33282a"/>
-
-
-            <text
-                x="300"
-                y="95"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Female — High credibility
-
-            </text>
-
-
-            <text
-                x="300"
-                y="155"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Private employed — High
-
-            </text>
-
-
-            <text
-                x="300"
-                y="215"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Weekly purchasers — High
-
-            </text>
-
-
-            <text
-                x="300"
-                y="275"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Google Reviews — High
-
-            </text>
-
-
-            <text
-                x="300"
-                y="335"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Age 46–50 — Moderate
-
-            </text>
-
-
-            <rect
-                x="320"
-                y="78"
-                width="531"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="138"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="198"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="258"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="318"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <text
-                x="866"
-                y="96"
-                fill="#c9a15a"
-                font-size="13">
-
-                90%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="156"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="216"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="276"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="336"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-        </svg>
-
-    </div>
-
-
-    <div class="finding-note">
-
-        <span>
-
-            <b>
-                Result &amp; discussion:
-            </b>
-
-            The reported findings show variation in perceived
-            credibility. Female respondents showed a strong
-            high-credibility response, while private-employed,
-            weekly-purchasing and Google Reviews groups showed
-            reported 100% high-credibility patterns. The 46–50 age
-            group was reported as moderate rather than high.
-
-        </span>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 9 — GRAPH 5
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-9">
-
-    <div class="eyebrow">
-        09 / 10 — Results
-    </div>
-
-
-    <h2>
-        Trust in Online Reviews During Purchase
-    </h2>
-
-
-    <p style="max-width:800px;">
-
-        The final result theme considers the level of trust
-        respondents place in online reviews while making a purchase.
-
-    </p>
-
-
-    <div class="chart-shell">
-
-
-        <div class="chart-title">
-            Trust in Online Reviews While Purchasing
-        </div>
-
-
-        <!-- EMBEDDED GRAPH IMAGE -->
-
-        <svg
-            class="graph-image"
-            viewBox="0 0 1000 430"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Trust in online reviews while purchasing">
-
-
-            <rect
-                width="1000"
-                height="430"
-                fill="#130f10"/>
-
-
-            <text
-                x="500"
-                y="35"
-                text-anchor="middle"
-                fill="#c9a15a"
-                font-family="Inter,Arial,sans-serif"
-                font-size="16">
-
-                Strongest reported subgroup patterns
-
-            </text>
-
-
-            <line
-                x1="310"
-                y1="70"
-                x2="310"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="510"
-                y1="70"
-                x2="510"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="710"
-                y1="70"
-                x2="710"
-                y2="370"
-                stroke="#33282a"/>
-
-            <line
-                x1="910"
-                y1="70"
-                x2="910"
-                y2="370"
-                stroke="#33282a"/>
-
-
-            <text
-                x="300"
-                y="95"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Female — Trust a little
-
-            </text>
-
-
-            <text
-                x="300"
-                y="155"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Weekly purchasers — Trust
-
-            </text>
-
-
-            <text
-                x="300"
-                y="215"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Age 46–50 — Neutral
-
-            </text>
-
-
-            <text
-                x="300"
-                y="275"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                Yet to be employed — Trust a little
-
-            </text>
-
-
-            <text
-                x="300"
-                y="335"
-                text-anchor="end"
-                fill="#efe6d8"
-                font-size="13">
-
-                PG — Do not trust at all
-
-            </text>
-
-
-            <rect
-                x="320"
-                y="78"
-                width="531"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="138"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="198"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <rect
-                x="320"
-                y="258"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#c9a15a"/>
-
-
-            <rect
-                x="320"
-                y="318"
-                width="590"
-                height="25"
-                rx="3"
-                fill="#8f1d24"/>
-
-
-            <text
-                x="866"
-                y="96"
-                fill="#c9a15a"
-                font-size="13">
-
-                90%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="156"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="216"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="276"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-
-            <text
-                x="925"
-                y="336"
-                fill="#c9a15a"
-                font-size="13">
-
-                100%
-
-            </text>
-
-        </svg>
-
-    </div>
-
-
-    <div class="finding-note">
-
-        <span>
-
-            <b>
-                Result &amp; discussion:
-            </b>
-
-            Trust is more nuanced than simply reading reviews.
-            Weekly purchasers showed the strongest reported trust
-            pattern, while female and yet-to-be-employed groups
-            showed a "trust a little" pattern. The PG subgroup had a
-            contrasting reported pattern of "do not trust at all",
-            demonstrating variation across educational groups.
-
-        </span>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SLIDE 10 — CONCLUSION
-======================================================= -->
-
-<section
-    class="slide"
-    id="slide-10">
-
-    <div class="eyebrow">
-        10 / 10 — Conclusion
-    </div>
-
-
-    <h2>
-        Results &amp; Discussion
-    </h2>
-
-
-    <div class="rule"></div>
-
-
-    <div class="discussion">
+        <div class="rule"></div>
 
         <p>
-
-            <b style="color:var(--parchment);">
-                Overall finding:
-            </b>
-
-            The empirical results show that online reviews play a
-            meaningful role in consumer purchase-related behaviour,
-            but the way consumers evaluate and trust reviews varies
-            across demographic and behavioural groups.
-
+            An empirical study examining how consumers evaluate,
+            use and trust online reviews while making purchase
+            decisions.
         </p>
 
-    </div>
-
-
-    <div
-        class="grid g2"
-        style="margin-top:20px;">
-
-
-        <div class="card">
-
-            <h3>
-                Review evaluation
-            </h3>
-
-            <p>
-
-                Verified-buyer reviews, customer photos/videos,
-                written reviews and star ratings each emerged as
-                important cues for different respondent groups.
-
-            </p>
-
+        <div class="metric">
+            Research Presentation
         </div>
-
-
-        <div class="card">
-
-            <h3>
-                Purchase behaviour
-            </h3>
-
-            <p>
-
-                Several subgroups reported agreement that online
-                reviews help with informed decisions and that they
-                normally read reviews before purchasing.
-
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>
-                Credibility
-            </h3>
-
-            <p>
-
-                Perceived credibility varied considerably between
-                groups, ranging from moderate to high in the reported
-                subgroup patterns.
-
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>
-                Trust
-            </h3>
-
-            <p>
-
-                Trust was not uniform. Some groups reported trusting
-                reviews, while others showed neutral, limited-trust
-                or no-trust patterns.
-
-            </p>
-
-        </div>
-
 
     </div>
 
+</section>
 
-    <div class="finding-note">
 
-        <span>
+<!-- =====================================================
+     SLIDE 2
+===================================================== -->
 
-            <b>
-                Research implication:
-            </b>
+<section class="slide">
 
-            Online reviews should therefore be understood as a
-            multi-dimensional source of consumer information rather
-            than as a single star-rating mechanism. The findings also
-            need to be interpreted in light of the study's convenience
-            sampling, geographic scope and self-report limitations.
+    <div class="content-card">
 
-        </span>
+        <div class="eyebrow">
+            02 / 10
+        </div>
+
+        <h1>
+            Study in Numbers
+        </h1>
+
+        <div class="rule"></div>
+
+        <p>
+            The research reports an empirical study based on
+            224 respondents from diverse demographic backgrounds.
+            The study examines awareness and attitudes towards
+            online reviews across demographic and behavioural
+            variables.
+        </p>
+
+        <div class="metric">
+            224 Respondents
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 3
+===================================================== -->
+
+<section class="slide">
+
+    <div class="content-card">
+
+        <div class="eyebrow">
+            03 / 10
+        </div>
+
+        <h1>
+            Research Methodology
+        </h1>
+
+        <div class="rule"></div>
+
+        <p>
+            The study uses a structured questionnaire and
+            empirical analysis. The questionnaire examines
+            demographic characteristics together with
+            respondents' perceptions and behaviour concerning
+            online reviews.
+        </p>
+
+        <div class="metric">
+            Primary Empirical Study
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 4
+===================================================== -->
+
+<section class="slide">
+
+    <div class="content-card">
+
+        <div class="eyebrow">
+            04 / 10
+        </div>
+
+        <h1>
+            What the Results Examine
+        </h1>
+
+        <div class="rule"></div>
+
+        <p>
+            The results examine factors influencing evaluation
+            of online reviews, whether reviews help consumers
+            make informed purchase decisions, their importance
+            as a source of product information, review-reading
+            behaviour before purchases, perceived credibility
+            and consumer trust.
+        </p>
+
+        <div class="metric">
+            Five Key Result Themes
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 5
+     FIGURE 1
+===================================================== -->
+
+<section class="slide">
+
+    <div class="graph-wrapper">
+
+        <div class="eyebrow">
+            05 / 10
+        </div>
+
+        <div class="graph-title">
+            Figure 1 — Age-wise: Greatest Influence on
+            Evaluation of Online Reviews
+        </div>
+
+        <div class="graph-card">
+
+            <!--
+            ACTUAL GRAPH IMAGE FROM THE RESEARCH PAPER
+            -->
+
+            <img
+                class="actual-graph"
+                src="PASTE_FIGURE_1_BASE64_HERE"
+                alt="Figure 1 - Age-wise distribution"
+            >
+
+        </div>
+
+        <div class="discussion">
+
+            <strong>
+                Brief result & discussion:
+            </strong>
+
+            The research paper reports that the
+            46–50 years group showed the strongest
+            single pattern, with 100% selecting
+            “verified buyer review” as the factor
+            having the greatest influence on evaluation.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 6
+     FIGURE 8
+===================================================== -->
+
+<section class="slide">
+
+    <div class="graph-wrapper">
+
+        <div class="eyebrow">
+            06 / 10
+        </div>
+
+        <div class="graph-title">
+            Figure 8 — Age-wise: Reviews Help Make
+            Informed Purchase Decisions
+        </div>
+
+        <div class="graph-card">
+
+            <!-- ACTUAL GRAPH IMAGE FROM PAPER -->
+
+            <img
+                class="actual-graph"
+                src="PASTE_FIGURE_8_BASE64_HERE"
+                alt="Figure 8 - Reviews help make informed purchase decisions"
+            >
+
+        </div>
+
+        <div class="discussion">
+
+            <strong>
+                Brief result & discussion:
+            </strong>
+
+            The research paper reports that the
+            46–50 years group showed the strongest
+            single pattern, with 100% selecting
+            “neutral” regarding whether online reviews
+            help them make informed purchase decisions.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 7
+     FIGURE 15
+===================================================== -->
+
+<section class="slide">
+
+    <div class="graph-wrapper">
+
+        <div class="eyebrow">
+            07 / 10
+        </div>
+
+        <div class="graph-title">
+            Figure 15 — Age-wise: Online Reviews as an
+            Important Source of Product Information
+        </div>
+
+        <div class="graph-card">
+
+            <!-- ACTUAL GRAPH IMAGE FROM PAPER -->
+
+            <img
+                class="actual-graph"
+                src="PASTE_FIGURE_15_BASE64_HERE"
+                alt="Figure 15 - Online reviews as product information"
+            >
+
+        </div>
+
+        <div class="discussion">
+
+            <strong>
+                Brief result & discussion:
+            </strong>
+
+            The research paper reports that the
+            46–50 years group showed the strongest
+            single pattern, with 100% selecting
+            “neutral” regarding online reviews as an
+            important source of product information.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 8
+     FIGURE 22
+===================================================== -->
+
+<section class="slide">
+
+    <div class="graph-wrapper">
+
+        <div class="eyebrow">
+            08 / 10
+        </div>
+
+        <div class="graph-title">
+            Figure 22 — Age-wise: Usually Read Online
+            Reviews Before Purchasing
+        </div>
+
+        <div class="graph-card">
+
+            <!-- ACTUAL GRAPH IMAGE FROM PAPER -->
+
+            <img
+                class="actual-graph"
+                src="PASTE_FIGURE_22_BASE64_HERE"
+                alt="Figure 22 - Reading online reviews before purchasing"
+            >
+
+        </div>
+
+        <div class="discussion">
+
+            <strong>
+                Brief result & discussion:
+            </strong>
+
+            The research paper reports that the
+            46–50 years group showed the strongest
+            single pattern, with 100% selecting
+            “agree” that they usually read online
+            reviews before purchasing a product.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 9
+     FIGURE 29
+===================================================== -->
+
+<section class="slide">
+
+    <div class="graph-wrapper">
+
+        <div class="eyebrow">
+            09 / 10
+        </div>
+
+        <div class="graph-title">
+            Figure 29 — Age-wise: Perceived Credibility
+            of Online Reviews
+        </div>
+
+        <div class="graph-card">
+
+            <!-- ACTUAL GRAPH IMAGE FROM PAPER -->
+
+            <img
+                class="actual-graph"
+                src="PASTE_FIGURE_29_BASE64_HERE"
+                alt="Figure 29 - Perceived credibility of online reviews"
+            >
+
+        </div>
+
+        <div class="discussion">
+
+            <strong>
+                Brief result & discussion:
+            </strong>
+
+            The research paper reports that the
+            46–50 years group showed the strongest
+            single pattern, with 100% selecting
+            “moderate” for the perceived credibility
+            of online reviews.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 10
+===================================================== -->
+
+<section class="slide">
+
+    <div class="content-card">
+
+        <div class="eyebrow">
+            10 / 10
+        </div>
+
+        <h1>
+            Conclusion
+        </h1>
+
+        <div class="rule"></div>
+
+        <p>
+            Overall, the paper concludes that there are
+            variations in awareness and attitudes towards
+            online reviews across demographic groups.
+            The findings identify differences in how
+            consumers evaluate, use and trust online reviews
+            when making purchase decisions.
+        </p>
+
+        <p>
+            The paper also recognises limitations relating
+            to sample size and geographic coverage, which
+            should be considered when interpreting the
+            findings.
+        </p>
+
+        <div class="metric">
+            Results & Discussion
+        </div>
 
     </div>
 
@@ -2979,668 +826,402 @@ button:focus-visible {
 </div>
 
 
+<!-- =====================================================
+     SLIDE COUNTER
+===================================================== -->
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
-<div class="foot">
-
-    <span>
-        THE IMPACT OF ONLINE REVIEWS
-    </span>
-
-    <span id="slideCounter">
-        01 / 10
-    </span>
-
+<div class="counter" id="counter">
+    01 / 10
 </div>
 
 
-
-<!-- =======================================================
-     NAVIGATION HINT
-======================================================= -->
-
-<div class="navigation-hint">
-
-    ← →
-    &nbsp; / &nbsp;
-    SWIPE
-    &nbsp; / &nbsp;
-    SPACE
-
-</div>
-
-
-
-<!-- =======================================================
+<!-- =====================================================
      DOT NAVIGATION
-======================================================= -->
+===================================================== -->
 
-<div
-    class="dots"
-    id="dots">
+<div class="dots" id="dots"></div>
 
 
-    <button
-        class="dot active"
-        aria-label="Go to slide 1"
-        data-slide="0">
-    </button>
+<!-- =====================================================
+     BACK / FORWARD BUTTONS
+===================================================== -->
 
+<div class="nav">
 
     <button
-        class="dot"
-        aria-label="Go to slide 2"
-        data-slide="1">
-    </button>
-
-
-    <button
-        class="dot"
-        aria-label="Go to slide 3"
-        data-slide="2">
-    </button>
-
-
-    <button
-        class="dot"
-        aria-label="Go to slide 4"
-        data-slide="3">
-    </button>
-
-
-    <button
-        class="dot"
-        aria-label="Go to slide 5"
-        data-slide="4">
-    </button>
-
-
-    <button
-        class="dot"
-        aria-label="Go to slide 6"
-        data-slide="5">
-    </button>
-
-
-    <button
-        class="dot"
-        aria-label="Go to slide 7"
-        data-slide="6">
-    </button>
-
-
-    <button
-        class="dot"
-        aria-label="Go to slide 8"
-        data-slide="7">
-    </button>
-
-
-    <button
-        class="dot"
-        aria-label="Go to slide 9"
-        data-slide="8">
-    </button>
-
-
-    <button
-        class="dot"
-        aria-label="Go to slide 10"
-        data-slide="9">
-    </button>
-
-
-</div>
-
-
-
-<!-- =======================================================
-     PREVIOUS / NEXT
-======================================================= -->
-
-<div class="navbtns">
-
-
-    <button
-        class="navbtn"
-        id="prevBtn"
-        type="button"
-        aria-label="Previous slide"
-        title="Previous slide">
-
+        id="prev"
+        aria-label="Previous slide">
         ←
-
     </button>
-
 
     <button
-        class="navbtn"
-        id="nextBtn"
-        type="button"
-        aria-label="Next slide"
-        title="Next slide">
-
+        id="next"
+        aria-label="Next slide">
         →
-
     </button>
-
 
 </div>
 
-
-
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
 
 <script>
 
-(function () {
+/* =====================================================
+   PRESENTATION ENGINE
+===================================================== */
 
-    "use strict";
+const slides =
+    [...document.querySelectorAll(".slide")];
+
+const dotsBox =
+    document.getElementById("dots");
+
+const prev =
+    document.getElementById("prev");
+
+const next =
+    document.getElementById("next");
+
+const progress =
+    document.getElementById("progress");
+
+const counter =
+    document.getElementById("counter");
+
+let current = 0;
+
+let locked = false;
 
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+/* =====================================================
+   CREATE DOTS
+===================================================== */
 
-    const slides =
-        Array.from(
-            document.querySelectorAll(".slide")
+slides.forEach((slide, index) => {
+
+    const dot =
+        document.createElement("button");
+
+    dot.className =
+        "dot" + (index === 0 ? " active" : "");
+
+    dot.setAttribute(
+        "aria-label",
+        "Go to slide " + (index + 1)
+    );
+
+    dot.addEventListener(
+        "click",
+        () => goToSlide(index)
+    );
+
+    dotsBox.appendChild(dot);
+
+});
+
+
+const dots =
+    [...document.querySelectorAll(".dot")];
+
+
+/* =====================================================
+   UPDATE PRESENTATION
+===================================================== */
+
+function updatePresentation() {
+
+    slides.forEach(
+        (slide, index) => {
+
+            slide.classList.toggle(
+                "active",
+                index === current
+            );
+
+        }
+    );
+
+
+    dots.forEach(
+        (dot, index) => {
+
+            dot.classList.toggle(
+                "active",
+                index === current
+            );
+
+        }
+    );
+
+
+    prev.disabled =
+        current === 0;
+
+
+    next.disabled =
+        current === slides.length - 1;
+
+
+    progress.style.width =
+        (
+            ((current + 1) / slides.length)
+            * 100
+        ) + "%";
+
+
+    counter.textContent =
+        String(current + 1).padStart(2, "0")
+        + " / "
+        + String(slides.length).padStart(2, "0");
+
+}
+
+
+/* =====================================================
+   GO TO SLIDE
+===================================================== */
+
+function goToSlide(index) {
+
+    if (locked) {
+        return;
+    }
+
+    index =
+        Math.max(
+            0,
+            Math.min(
+                slides.length - 1,
+                index
+            )
         );
 
 
-    const dots =
-        Array.from(
-            document.querySelectorAll(".dot")
-        );
-
-
-    const prevBtn =
-        document.getElementById("prevBtn");
-
-
-    const nextBtn =
-        document.getElementById("nextBtn");
-
-
-    const progress =
-        document.getElementById("progress");
-
-
-    const counter =
-        document.getElementById("slideCounter");
-
-
-    /* =====================================================
-       STATE
-    ===================================================== */
-
-    let current = 0;
-
-    let isAnimating = false;
-
-    let wheelLocked = false;
-
-    const total = slides.length;
-
-
-    /* =====================================================
-       UPDATE CONTROLS
-    ===================================================== */
-
-    function updateControls() {
-
-
-        /* Previous */
-
-        prevBtn.disabled =
-            current === 0;
-
-
-        /* Next */
-
-        nextBtn.disabled =
-            current === total - 1;
-
-
-        /* Dots */
-
-        dots.forEach(
-            function (dot, index) {
-
-                dot.classList.toggle(
-                    "active",
-                    index === current
-                );
-
-            }
-        );
-
-
-        /* Progress */
-
-        const percentage =
-            ((current + 1) / total) * 100;
-
-
-        progress.style.width =
-            percentage + "%";
-
-
-        /* Counter */
-
-        counter.textContent =
-            String(current + 1).padStart(2, "0")
-            +
-            " / "
-            +
-            String(total).padStart(2, "0");
-
+    if (index === current) {
+        return;
     }
 
 
-    /* =====================================================
-       GO TO SLIDE
-    ===================================================== */
+    current = index;
 
-    function goToSlide(index) {
+    updatePresentation();
 
 
-        if (index < 0) {
+    locked = true;
 
-            index = 0;
+    setTimeout(
+        () => {
+            locked = false;
+        },
+        420
+    );
 
-        }
+}
 
 
-        if (index >= total) {
+/* =====================================================
+   BUTTON NAVIGATION
+===================================================== */
 
-            index = total - 1;
+prev.addEventListener(
+    "click",
+    () => goToSlide(current - 1)
+);
+
+
+next.addEventListener(
+    "click",
+    () => goToSlide(current + 1)
+);
+
+
+/* =====================================================
+   KEYBOARD NAVIGATION
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            [
+                "ArrowRight",
+                "ArrowDown",
+                "PageDown",
+                " "
+            ].includes(event.key)
+        ) {
+
+            event.preventDefault();
+
+            goToSlide(current + 1);
 
         }
 
 
         if (
-            index === current
-            ||
-            isAnimating
+            [
+                "ArrowLeft",
+                "ArrowUp",
+                "PageUp"
+            ].includes(event.key)
         ) {
 
-            return;
+            event.preventDefault();
+
+            goToSlide(current - 1);
 
         }
 
 
-        isAnimating = true;
+        if (event.key === "Home") {
+
+            event.preventDefault();
+
+            goToSlide(0);
+
+        }
 
 
-        const previous =
-            current;
+        if (event.key === "End") {
+
+            event.preventDefault();
+
+            goToSlide(slides.length - 1);
+
+        }
+
+    }
+);
 
 
-        current =
-            index;
+/* =====================================================
+   SWIPE NAVIGATION
+===================================================== */
+
+let startX = 0;
+let startY = 0;
 
 
-        slides.forEach(
-            function (slide, i) {
+document.addEventListener(
+    "touchstart",
+    event => {
 
-                slide.classList.remove(
-                    "active",
-                    "prev"
-                );
+        if (event.touches.length !== 1) {
+            return;
+        }
+
+        startX =
+            event.touches[0].clientX;
+
+        startY =
+            event.touches[0].clientY;
+
+    },
+    {
+        passive: true
+    }
+);
 
 
-                if (i === current) {
+document.addEventListener(
+    "touchend",
+    event => {
 
-                    slide.classList.add(
-                        "active"
-                    );
+        if (
+            event.changedTouches.length !== 1
+        ) {
+            return;
+        }
 
-                }
+
+        const endX =
+            event.changedTouches[0].clientX;
+
+        const endY =
+            event.changedTouches[0].clientY;
 
 
-                else if (i === previous) {
+        const deltaX =
+            endX - startX;
 
-                    if (index > previous) {
+        const deltaY =
+            endY - startY;
 
-                        slide.classList.add(
-                            "prev"
-                        );
 
-                    }
+        if (
+            Math.abs(deltaX) > 50 &&
+            Math.abs(deltaX) > Math.abs(deltaY)
+        ) {
 
-                }
+            if (deltaX < 0) {
+
+                goToSlide(current + 1);
+
+            } else {
+
+                goToSlide(current - 1);
 
             }
-        );
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
 
 
-        updateControls();
+/* =====================================================
+   MOUSE WHEEL NAVIGATION
+===================================================== */
+
+let wheelLocked = false;
+
+
+document.addEventListener(
+    "wheel",
+    event => {
+
+        if (wheelLocked) {
+            return;
+        }
+
+        wheelLocked = true;
+
+
+        if (event.deltaY > 0) {
+
+            goToSlide(current + 1);
+
+        } else {
+
+            goToSlide(current - 1);
+
+        }
 
 
         setTimeout(
-            function () {
-
-                isAnimating = false;
-
+            () => {
+                wheelLocked = false;
             },
-            480
+            600
         );
 
+    },
+    {
+        passive: true
     }
+);
 
 
-    /* =====================================================
-       NEXT
-    ===================================================== */
+/* =====================================================
+   INITIALISE
+===================================================== */
 
-    function nextSlide() {
-
-        if (current < total - 1) {
-
-            goToSlide(
-                current + 1
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       PREVIOUS
-    ===================================================== */
-
-    function previousSlide() {
-
-        if (current > 0) {
-
-            goToSlide(
-                current - 1
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       BUTTON EVENTS
-    ===================================================== */
-
-    prevBtn.addEventListener(
-        "click",
-        previousSlide
-    );
-
-
-    nextBtn.addEventListener(
-        "click",
-        nextSlide
-    );
-
-
-    /* =====================================================
-       DOT EVENTS
-    ===================================================== */
-
-    dots.forEach(
-        function (dot) {
-
-            dot.addEventListener(
-                "click",
-                function () {
-
-                    goToSlide(
-                        Number(
-                            dot.dataset.slide
-                        )
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       KEYBOARD
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-
-            switch (event.key) {
-
-
-                case "ArrowRight":
-
-                case "ArrowDown":
-
-                case "PageDown":
-
-                case " ":
-
-                    event.preventDefault();
-
-                    nextSlide();
-
-                    break;
-
-
-                case "ArrowLeft":
-
-                case "ArrowUp":
-
-                case "PageUp":
-
-                    event.preventDefault();
-
-                    previousSlide();
-
-                    break;
-
-
-                case "Home":
-
-                    event.preventDefault();
-
-                    goToSlide(0);
-
-                    break;
-
-
-                case "End":
-
-                    event.preventDefault();
-
-                    goToSlide(
-                        total - 1
-                    );
-
-                    break;
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       MOUSE WHEEL
-    ===================================================== */
-
-    document.addEventListener(
-        "wheel",
-        function (event) {
-
-
-            if (wheelLocked) {
-
-                return;
-
-            }
-
-
-            wheelLocked = true;
-
-
-            if (event.deltaY > 0) {
-
-                nextSlide();
-
-            }
-
-            else if (event.deltaY < 0) {
-
-                previousSlide();
-
-            }
-
-
-            setTimeout(
-                function () {
-
-                    wheelLocked = false;
-
-                },
-                650
-            );
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    /* =====================================================
-       TOUCH / SWIPE
-    ===================================================== */
-
-    let touchStartX = 0;
-
-    let touchStartY = 0;
-
-
-    document.addEventListener(
-        "touchstart",
-        function (event) {
-
-
-            if (
-                event.touches.length !== 1
-            ) {
-
-                return;
-
-            }
-
-
-            touchStartX =
-                event.touches[0].clientX;
-
-
-            touchStartY =
-                event.touches[0].clientY;
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    document.addEventListener(
-        "touchend",
-        function (event) {
-
-
-            if (
-                event.changedTouches.length !== 1
-            ) {
-
-                return;
-
-            }
-
-
-            const touchEndX =
-                event.changedTouches[0].clientX;
-
-
-            const touchEndY =
-                event.changedTouches[0].clientY;
-
-
-            const dx =
-                touchEndX - touchStartX;
-
-
-            const dy =
-                touchEndY - touchStartY;
-
-
-            /* Ignore small movements */
-
-            if (
-                Math.abs(dx) < 50
-            ) {
-
-                return;
-
-            }
-
-
-            /* Ignore vertical scrolling */
-
-            if (
-                Math.abs(dx) <
-                Math.abs(dy)
-            ) {
-
-                return;
-
-            }
-
-
-            if (dx < 0) {
-
-                nextSlide();
-
-            }
-
-            else {
-
-                previousSlide();
-
-            }
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    /* =====================================================
-       INITIALISE
-    ===================================================== */
-
-    updateControls();
-
-})();
+updatePresentation();
 
 </script>
-
 
 </body>
 </html>
