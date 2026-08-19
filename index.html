@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>The Impact of Online Reviews on Consumer Purchase Decisions</title>
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<title>
+    The Impact of Online Reviews on Consumer Purchase Decisions
+</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Cormorant+Garamond:ital@0;1&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
       rel="stylesheet">
 
@@ -17,276 +25,404 @@
    ROOT
 ========================================================= */
 
-:root{
-    --ink:#0a0708;
-    --panel:#130f10;
-    --panel-2:#1b1516;
-    --hairline:#33282a;
-    --red:#8f1d24;
-    --red-bright:#b8262e;
-    --gold:#c9a15a;
-    --gold-soft:#8a744a;
-    --parchment:#efe6d8;
-    --parchment-dim:#b9ada0;
-    --white:#fffaf1;
-    --shadow:0 30px 80px -20px rgba(0,0,0,.7);
+:root {
+    --ink: #0a0708;
+    --panel: #130f10;
+    --panel-2: #1b1516;
+
+    --hairline: #33282a;
+
+    --red: #8f1d24;
+    --red-bright: #b8262e;
+
+    --gold: #c9a15a;
+    --gold-soft: #8a744a;
+
+    --parchment: #efe6d8;
+    --parchment-dim: #b9ada0;
+
+    --white: #fffaf1;
+
+    --shadow:
+        0 30px 80px -20px rgba(0,0,0,.7);
 }
 
+
 /* =========================================================
-   GLOBAL
+   RESET
 ========================================================= */
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
 html,
-body{
-    width:100%;
-    height:100%;
-    margin:0;
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-body{
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+
     background:
         radial-gradient(
             ellipse at 15% -10%,
             rgba(143,29,36,.25),
             transparent 45%
         ),
+
         radial-gradient(
             ellipse at 100% 110%,
             rgba(201,161,90,.10),
             transparent 45%
         ),
+
         var(--ink);
 
-    color:var(--parchment);
-    font-family:'Inter',sans-serif;
-    overflow:hidden;
-    -webkit-font-smoothing:antialiased;
+    color: var(--parchment);
+
+    font-family: 'Inter', sans-serif;
+
+    overflow: hidden;
+
+    -webkit-font-smoothing: antialiased;
+
+    text-rendering: optimizeLegibility;
 }
+
 
 /* =========================================================
    DECK
 ========================================================= */
 
-.deck{
-    position:relative;
-    width:100vw;
-    height:100vh;
-    height:100dvh;
+.deck {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
 }
+
 
 /* =========================================================
    SLIDES
 ========================================================= */
 
-.slide{
-    position:absolute;
-    inset:0;
+.slide {
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     padding:
-        clamp(28px,6vw,100px)
-        clamp(24px,8vw,140px);
+        clamp(28px, 6vw, 100px)
+        clamp(24px, 8vw, 140px)
+        90px;
 
-    opacity:0;
-    transform:translateX(45px);
+    opacity: 0;
+
+    transform: translateX(45px);
 
     transition:
         opacity .45s cubic-bezier(.22,.61,.36,1),
         transform .45s cubic-bezier(.22,.61,.36,1);
 
-    pointer-events:none;
-    overflow-y:auto;
-    overflow-x:hidden;
+    pointer-events: none;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-soft) transparent;
 }
 
-.slide.active{
-    opacity:1;
-    transform:translateX(0);
-    pointer-events:auto;
+.slide.active {
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+    pointer-events: auto;
 }
 
-.slide.prev{
-    transform:translateX(-45px);
+.slide.prev {
+
+    transform: translateX(-45px);
 }
+
 
 /* =========================================================
    TYPOGRAPHY
 ========================================================= */
 
-.eyebrow{
-    font-family:'DM Mono',monospace;
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    font-size:11.5px;
-    color:var(--gold);
+.eyebrow {
 
-    display:flex;
-    align-items:center;
-    gap:12px;
+    font-family: 'DM Mono', monospace;
 
-    margin-bottom:18px;
+    letter-spacing: .28em;
+
+    text-transform: uppercase;
+
+    font-size: 11.5px;
+
+    color: var(--gold);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
 }
 
-.eyebrow::before{
-    content:"";
-    width:26px;
-    height:1px;
-    background:var(--gold);
-    display:inline-block;
+.eyebrow::before {
+
+    content: "";
+
+    width: 26px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    display: inline-block;
 }
+
 
 h1,
 h2,
-h3{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    margin:0;
-    color:var(--parchment);
-    line-height:1.05;
+h3 {
+
+    font-family: 'Fraunces', serif;
+
+    font-weight: 600;
+
+    margin: 0;
+
+    color: var(--parchment);
+
+    line-height: 1.05;
 }
 
-h1{
-    font-size:clamp(34px,4.6vw,62px);
+
+h1 {
+
+    font-size:
+        clamp(34px, 4.6vw, 62px);
 }
 
-h2{
-    font-size:clamp(25px,3vw,38px);
+
+h2 {
+
+    font-size:
+        clamp(25px, 3vw, 38px);
 }
 
-h3{
-    font-size:22px;
+
+h3 {
+
+    font-size: 22px;
 }
 
-p{
-    line-height:1.65;
-    color:var(--parchment-dim);
-    font-weight:400;
+
+p {
+
+    line-height: 1.65;
+
+    color: var(--parchment-dim);
+
+    font-weight: 400;
 }
 
-.accent{
-    color:var(--gold);
+
+.accent {
+
+    color: var(--gold);
 }
 
-.accent-red{
-    color:#e0555c;
+
+.rule {
+
+    width: 64px;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
+
+    margin: 22px 0;
 }
 
-.rule{
-    width:64px;
-    height:2px;
-    background:linear-gradient(
-        90deg,
-        var(--gold),
-        transparent
-    );
-    margin:22px 0;
-}
 
 /* =========================================================
    TITLE
 ========================================================= */
 
-.titlewrap{
-    max-width:920px;
+.titlewrap {
+
+    max-width: 920px;
 }
 
-.sub{
-    font-family:'Cormorant Garamond',serif;
-    font-style:italic;
-    color:var(--gold-soft);
-    font-size:clamp(17px,1.6vw,22px);
-    margin-top:16px;
-    max-width:720px;
+
+.sub {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-style: italic;
+
+    color: var(--gold-soft);
+
+    font-size:
+        clamp(17px, 1.6vw, 22px);
+
+    margin-top: 16px;
+
+    max-width: 720px;
 }
 
-.author-card{
-    margin-top:48px;
 
-    display:flex;
-    align-items:center;
-    gap:18px;
+.author-card {
 
-    border-top:1px solid var(--hairline);
-    padding-top:24px;
+    margin-top: 48px;
 
-    max-width:520px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    border-top:
+        1px solid var(--hairline);
+
+    padding-top: 24px;
+
+    max-width: 520px;
 }
 
-.seal{
-    width:52px;
-    height:52px;
-    border-radius:50%;
 
-    border:1.5px solid var(--gold);
+.seal {
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width: 52px;
+    height: 52px;
 
-    font-family:'Fraunces',serif;
-    color:var(--gold);
-    font-size:20px;
+    border-radius: 50%;
 
-    flex-shrink:0;
+    border:
+        1.5px solid var(--gold);
 
-    position:relative;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: 'Fraunces', serif;
+
+    color: var(--gold);
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+
+    position: relative;
 }
 
-.seal::after{
-    content:"";
-    position:absolute;
-    inset:-6px;
-    border:1px solid var(--gold-soft);
-    border-radius:50%;
-    opacity:.4;
+
+.seal::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -6px;
+
+    border:
+        1px solid var(--gold-soft);
+
+    border-radius: 50%;
+
+    opacity: .4;
 }
 
-.author-name{
-    font-family:'Fraunces',serif;
-    font-size:19px;
-    color:var(--parchment);
+
+.author-name {
+
+    font-family: 'Fraunces', serif;
+
+    font-size: 19px;
+
+    color: var(--parchment);
 }
 
-.author-meta{
-    font-family:'DM Mono',monospace;
-    font-size:12px;
-    color:var(--parchment-dim);
-    margin-top:3px;
+
+.author-meta {
+
+    font-family: 'DM Mono', monospace;
+
+    font-size: 12px;
+
+    color: var(--parchment-dim);
+
+    margin-top: 3px;
 }
+
 
 /* =========================================================
    GRIDS
 ========================================================= */
 
-.grid{
-    display:grid;
-    gap:16px;
+.grid {
+
+    display: grid;
+
+    gap: 16px;
 }
 
-.g2{
-    grid-template-columns:repeat(2,1fr);
+
+.g2 {
+
+    grid-template-columns:
+        repeat(2, 1fr);
 }
 
-.g3{
-    grid-template-columns:repeat(3,1fr);
+
+.g3 {
+
+    grid-template-columns:
+        repeat(3, 1fr);
 }
 
-.g4{
-    grid-template-columns:repeat(4,1fr);
+
+.g4 {
+
+    grid-template-columns:
+        repeat(4, 1fr);
 }
+
 
 /* =========================================================
    CARDS
 ========================================================= */
 
-.card{
+.card {
+
     background:
         linear-gradient(
             160deg,
@@ -294,118 +430,136 @@ p{
             var(--panel-2)
         );
 
-    border:1px solid var(--hairline);
-    border-radius:4px;
+    border:
+        1px solid var(--hairline);
 
-    padding:20px;
+    border-radius: 4px;
 
-    position:relative;
-    overflow:hidden;
+    padding: 20px;
+
+    position: relative;
+
+    overflow: hidden;
 }
 
-.card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
 
-    width:3px;
-    height:100%;
+.card::before {
 
-    background:var(--red);
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: var(--red);
 }
 
-.stat-num{
-    font-family:'Fraunces',serif;
-    font-size:clamp(28px,2.6vw,40px);
-    color:var(--gold);
-    font-weight:600;
+
+.stat-num {
+
+    font-family: 'Fraunces', serif;
+
+    font-size:
+        clamp(28px, 2.6vw, 40px);
+
+    color: var(--gold);
+
+    font-weight: 600;
 }
 
-.stat-label{
-    font-size:12.5px;
-    color:var(--parchment-dim);
-    margin-top:6px;
-    line-height:1.45;
+
+.stat-label {
+
+    font-size: 12.5px;
+
+    color: var(--parchment-dim);
+
+    margin-top: 6px;
+
+    line-height: 1.45;
 }
+
 
 /* =========================================================
    TWO COLUMN
 ========================================================= */
 
-.twocol{
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:60px;
-    align-items:center;
+.twocol {
+
+    display: grid;
+
+    grid-template-columns:
+        1.1fr .9fr;
+
+    gap: 60px;
+
+    align-items: center;
 }
+
 
 /* =========================================================
-   LISTS
+   FORMAL LIST
 ========================================================= */
 
-ul.formal{
-    list-style:none;
-    padding:0;
-    margin:0;
+ul.formal {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
 }
 
-ul.formal li{
-    display:flex;
-    gap:14px;
 
-    padding:11px 0;
+ul.formal li {
 
-    border-bottom:1px solid var(--hairline);
+    display: flex;
 
-    color:var(--parchment);
-    font-size:15.5px;
-    line-height:1.55;
+    gap: 14px;
+
+    padding: 11px 0;
+
+    border-bottom:
+        1px solid var(--hairline);
+
+    color: var(--parchment);
+
+    font-size: 15.5px;
+
+    line-height: 1.55;
 }
 
-ul.formal li:last-child{
-    border-bottom:none;
+
+ul.formal li:last-child {
+
+    border-bottom: none;
 }
 
-ul.formal li .num{
-    font-family:'DM Mono',monospace;
-    color:var(--red-bright);
-    font-size:13px;
-    padding-top:2px;
-    flex-shrink:0;
+
+ul.formal li .num {
+
+    font-family: 'DM Mono', monospace;
+
+    color: var(--red-bright);
+
+    font-size: 13px;
+
+    padding-top: 2px;
+
+    flex-shrink: 0;
 }
+
 
 /* =========================================================
-   LITERATURE
+   CHART SHELL
 ========================================================= */
 
-.lit-item{
-    padding:14px 0;
-    border-bottom:1px solid var(--hairline);
-}
+.chart-shell {
 
-.lit-item:last-child{
-    border-bottom:none;
-}
-
-.lit-name{
-    font-family:'Fraunces',serif;
-    color:var(--gold);
-    font-size:15.5px;
-}
-
-.lit-desc{
-    font-size:13.5px;
-    color:var(--parchment-dim);
-    margin-top:4px;
-    line-height:1.5;
-}
-
-/* =========================================================
-   CHART CONTAINER
-========================================================= */
-
-.chart-shell{
     background:
         linear-gradient(
             160deg,
@@ -413,124 +567,92 @@ ul.formal li .num{
             var(--panel-2)
         );
 
-    border:1px solid var(--hairline);
-    border-radius:6px;
+    border:
+        1px solid var(--hairline);
 
-    padding:26px;
+    border-radius: 6px;
 
-    box-shadow:var(--shadow);
+    padding: 22px;
 
-    width:100%;
-    max-width:1050px;
+    box-shadow: var(--shadow);
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin-top: 12px;
 }
 
-.chart-title{
-    font-family:'Fraunces',serif;
-    color:var(--parchment);
-    font-size:20px;
-    margin-bottom:24px;
+
+.chart-title {
+
+    font-family: 'Fraunces', serif;
+
+    color: var(--parchment);
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
 }
 
-.chart{
-    width:100%;
+
+/* =========================================================
+   SVG GRAPHS
+========================================================= */
+
+.graph-image {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    border-radius: 4px;
 }
 
-.bar-row{
-    display:grid;
-    grid-template-columns:
-        minmax(130px,190px)
-        1fr
-        65px;
-
-    align-items:center;
-    gap:15px;
-
-    margin:17px 0;
-}
-
-.bar-label{
-    color:var(--parchment);
-    font-size:13px;
-    line-height:1.3;
-}
-
-.bar-track{
-    height:19px;
-    background:#241b1d;
-    border:1px solid #3b2e30;
-    border-radius:3px;
-    overflow:hidden;
-}
-
-.bar{
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--red),
-            var(--red-bright)
-        );
-
-    border-radius:2px;
-
-    width:0;
-
-    animation:growBar 1s ease forwards;
-}
-
-.bar.gold{
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-soft),
-            var(--gold)
-        );
-}
-
-.bar-value{
-    font-family:'DM Mono',monospace;
-    color:var(--gold);
-    font-size:12px;
-    text-align:right;
-}
-
-@keyframes growBar{
-    from{
-        width:0;
-    }
-}
 
 /* =========================================================
    FINDING NOTE
 ========================================================= */
 
-.finding-note{
-    margin-top:20px;
+.finding-note {
 
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
+    margin-top: 18px;
 
-    font-size:14px;
-    color:var(--parchment-dim);
+    display: flex;
 
-    border-left:2px solid var(--gold);
-    padding-left:14px;
+    gap: 12px;
 
-    max-width:1000px;
+    align-items: flex-start;
+
+    font-size: 14px;
+
+    color: var(--parchment-dim);
+
+    border-left:
+        2px solid var(--gold);
+
+    padding-left: 14px;
+
+    max-width: 1050px;
 }
 
-.finding-note b{
-    color:var(--parchment);
-    font-weight:600;
+
+.finding-note b {
+
+    color: var(--parchment);
+
+    font-weight: 600;
 }
+
 
 /* =========================================================
-   DISCUSSION CARD
+   DISCUSSION
 ========================================================= */
 
-.discussion{
+.discussion {
+
     background:
         linear-gradient(
             160deg,
@@ -538,107 +660,133 @@ ul.formal li .num{
             var(--panel-2)
         );
 
-    border:1px solid var(--hairline);
-    border-left:3px solid var(--gold);
+    border:
+        1px solid var(--hairline);
 
-    padding:20px 24px;
+    border-left:
+        3px solid var(--gold);
 
-    max-width:980px;
+    padding: 20px 24px;
 
-    margin-top:20px;
+    max-width: 980px;
+
+    margin-top: 20px;
 }
 
-.discussion p{
-    margin:0;
-    font-size:14px;
+
+.discussion p {
+
+    margin: 0;
+
+    font-size: 14px;
 }
+
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
-.foot{
-    position:fixed;
+.foot {
 
-    bottom:18px;
-    left:0;
-    right:0;
+    position: fixed;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    bottom: 18px;
+
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
 
     padding:
         0
-        clamp(24px,8vw,140px);
+        clamp(24px, 8vw, 140px);
 
-    font-family:'DM Mono',monospace;
-    font-size:10px;
+    font-family: 'DM Mono', monospace;
 
-    color:var(--gold-soft);
-    letter-spacing:.08em;
+    font-size: 10px;
 
-    z-index:10;
+    color: var(--gold-soft);
 
-    pointer-events:none;
+    letter-spacing: .08em;
+
+    z-index: 10;
+
+    pointer-events: none;
 }
+
 
 /* =========================================================
    PROGRESS
 ========================================================= */
 
-.progress{
-    position:fixed;
+.progress {
 
-    top:0;
-    left:0;
+    position: fixed;
 
-    height:2px;
+    top: 0;
+    left: 0;
 
-    width:0;
+    height: 2px;
 
-    background:var(--red-bright);
+    width: 0;
 
-    transition:width .35s ease;
+    background: var(--red-bright);
 
-    z-index:100;
+    transition:
+        width .35s ease;
+
+    z-index: 100;
 }
+
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
-.navbtns{
-    position:fixed;
+.navbtns {
 
-    bottom:18px;
-    right:20px;
+    position: fixed;
 
-    z-index:100;
+    bottom: 18px;
 
-    display:flex;
-    gap:9px;
+    right: 20px;
+
+    z-index: 100;
+
+    display: flex;
+
+    gap: 9px;
 }
 
-.navbtn{
-    width:46px;
-    height:46px;
 
-    border-radius:50%;
+.navbtn {
 
-    background:rgba(19,15,16,.92);
+    width: 46px;
+    height: 46px;
 
-    border:1px solid var(--hairline);
+    border-radius: 50%;
 
-    color:var(--gold);
+    background:
+        rgba(19,15,16,.92);
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    border:
+        1px solid var(--hairline);
 
-    cursor:pointer;
+    color: var(--gold);
 
-    backdrop-filter:blur(8px);
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
 
     transition:
         border-color .2s,
@@ -646,260 +794,321 @@ ul.formal li .num{
         opacity .2s,
         background .2s;
 
-    font-size:17px;
+    font-size: 17px;
 
-    user-select:none;
-    -webkit-tap-highlight-color:transparent;
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-.navbtn:hover{
-    border-color:var(--gold);
-    transform:scale(1.06);
-    background:rgba(35,27,28,.95);
+
+.navbtn:hover {
+
+    border-color: var(--gold);
+
+    transform: scale(1.06);
+
+    background:
+        rgba(35,27,28,.95);
 }
 
-.navbtn:active{
-    transform:scale(.92);
+
+.navbtn:active {
+
+    transform: scale(.92);
 }
 
-.navbtn:disabled{
-    opacity:.25;
-    cursor:not-allowed;
-    transform:none;
+
+.navbtn:disabled {
+
+    opacity: .25;
+
+    cursor: not-allowed;
+
+    transform: none;
 }
+
 
 /* =========================================================
-   DOT NAVIGATION
+   DOTS
 ========================================================= */
 
-.dots{
-    position:fixed;
+.dots {
 
-    bottom:31px;
-    left:50%;
+    position: fixed;
 
-    transform:translateX(-50%);
+    bottom: 31px;
 
-    z-index:100;
+    left: 50%;
 
-    display:flex;
-    gap:7px;
+    transform:
+        translateX(-50%);
 
-    max-width:45vw;
-    overflow:hidden;
+    z-index: 100;
+
+    display: flex;
+
+    gap: 7px;
+
+    max-width: 45vw;
+
+    overflow: hidden;
 }
 
-.dot{
-    width:7px;
-    height:7px;
 
-    flex-shrink:0;
+.dot {
 
-    border-radius:50%;
+    width: 7px;
+    height: 7px;
 
-    background:var(--hairline);
+    flex-shrink: 0;
 
-    border:0;
+    border-radius: 50%;
 
-    padding:0;
+    background: var(--hairline);
 
-    cursor:pointer;
+    border: 0;
+
+    padding: 0;
+
+    cursor: pointer;
 
     transition:
         all .25s ease;
 }
 
-.dot:hover{
-    background:var(--gold-soft);
+
+.dot:hover {
+
+    background: var(--gold-soft);
 }
 
-.dot.active{
-    background:var(--gold);
 
-    width:20px;
+.dot.active {
 
-    border-radius:4px;
+    background: var(--gold);
+
+    width: 20px;
+
+    border-radius: 4px;
 }
+
 
 /* =========================================================
-   HINT
+   NAVIGATION HINT
 ========================================================= */
 
-.navigation-hint{
-    position:fixed;
+.navigation-hint {
 
-    top:18px;
-    right:22px;
+    position: fixed;
 
-    z-index:20;
+    top: 18px;
 
-    font-family:'DM Mono',monospace;
-    font-size:9px;
+    right: 22px;
 
-    letter-spacing:.08em;
+    z-index: 20;
 
-    color:var(--gold-soft);
+    font-family: 'DM Mono', monospace;
 
-    opacity:.7;
+    font-size: 9px;
+
+    letter-spacing: .08em;
+
+    color: var(--gold-soft);
+
+    opacity: .7;
 }
+
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:900px){
+@media (max-width: 900px) {
 
-    .twocol{
-        grid-template-columns:1fr;
-        gap:25px;
+    .twocol {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
     }
 
-    .g4{
-        grid-template-columns:repeat(2,1fr);
+
+    .g4 {
+
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-    .g3{
-        grid-template-columns:1fr;
+
+    .g3 {
+
+        grid-template-columns: 1fr;
     }
 
-    .chart-shell{
-        padding:20px;
+
+    .chart-shell {
+
+        padding: 16px;
     }
 }
 
-@media(max-width:640px){
 
-    body{
-        overflow:hidden;
-    }
+@media (max-width: 640px) {
 
-    .slide{
-        justify-content:flex-start;
+    .slide {
+
+        justify-content: flex-start;
 
         padding:
-            55px 22px 90px;
-
-        overflow-y:auto;
+            55px 18px 90px;
     }
+
 
     .g2,
-    .g4{
-        grid-template-columns:1fr;
+    .g4 {
+
+        grid-template-columns: 1fr;
     }
 
-    .chart-shell{
-        padding:16px;
+
+    .chart-shell {
+
+        padding: 12px;
     }
 
-    .bar-row{
-        grid-template-columns:
-            105px
-            1fr
-            50px;
 
-        gap:8px;
-        margin:14px 0;
+    .finding-note {
+
+        font-size: 12.5px;
     }
 
-    .bar-label{
-        font-size:11px;
+
+    .discussion {
+
+        padding: 16px;
     }
 
-    .bar-value{
-        font-size:10px;
+
+    .navbtns {
+
+        bottom: 14px;
+
+        right: 14px;
     }
 
-    .bar-track{
-        height:16px;
+
+    .navbtn {
+
+        width: 43px;
+
+        height: 43px;
     }
 
-    .navbtns{
-        bottom:14px;
-        right:14px;
+
+    .dots {
+
+        bottom: 30px;
+
+        max-width: 42vw;
     }
 
-    .navbtn{
-        width:43px;
-        height:43px;
+
+    .foot {
+
+        display: none;
     }
 
-    .dots{
-        bottom:30px;
-        left:50%;
-        max-width:42vw;
-    }
 
-    .foot{
-        display:none;
-    }
+    .navigation-hint {
 
-    .navigation-hint{
-        display:none;
-    }
-
-    .finding-note{
-        font-size:12.5px;
-    }
-
-    .discussion{
-        padding:16px;
+        display: none;
     }
 }
+
 
 /* =========================================================
    ACCESSIBILITY
 ========================================================= */
 
-button:focus-visible{
-    outline:2px solid var(--gold);
-    outline-offset:3px;
+button:focus-visible {
+
+    outline:
+        2px solid var(--gold);
+
+    outline-offset: 3px;
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- =====================================================
+
+<!-- =======================================================
      PROGRESS BAR
-===================================================== -->
+======================================================= -->
 
-<div class="progress" id="progress"></div>
+<div
+    class="progress"
+    id="progress">
+</div>
 
-<!-- =====================================================
-     PRESENTATION
-===================================================== -->
 
-<div class="deck" id="deck">
+<!-- =======================================================
+     PRESENTATION DECK
+======================================================= -->
 
-<!-- =====================================================
-     SLIDE 1
-===================================================== -->
+<div
+    class="deck"
+    id="deck">
 
-<section class="slide active" id="slide-1">
+
+<!-- =======================================================
+     SLIDE 1 — TITLE
+======================================================= -->
+
+<section
+    class="slide active"
+    id="slide-1">
 
     <div class="eyebrow">
         Research Presentation · 01 / 10
     </div>
 
+
     <div class="titlewrap">
 
         <h1>
+
             A Study on the Impact of
+
             <br>
-            <span class="accent">Online Reviews</span>
+
+            <span class="accent">
+                Online Reviews
+            </span>
+
             on Consumer
+
             <br>
+
             Purchase Decisions
+
         </h1>
 
+
         <p class="sub">
+
             An empirical study of how consumers perceive,
             evaluate and rely upon online reviews when making
             purchase decisions.
+
         </p>
 
     </div>
+
 
     <div class="author-card">
 
@@ -907,7 +1116,9 @@ button:focus-visible{
             HS
         </div>
 
+
         <div>
+
             <div class="author-name">
                 Hrithika Suri
             </div>
@@ -915,6 +1126,7 @@ button:focus-visible{
             <div class="author-meta">
                 RESEARCH PRESENTATION
             </div>
+
         </div>
 
     </div>
@@ -922,126 +1134,198 @@ button:focus-visible{
 </section>
 
 
-<!-- =====================================================
-     SLIDE 2 — AT A GLANCE
-===================================================== -->
 
-<section class="slide" id="slide-2">
+<!-- =======================================================
+     SLIDE 2 — STUDY IN NUMBERS
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-2">
 
     <div class="eyebrow">
         02 / 10 — At a Glance
     </div>
 
+
     <h2>
         Study in Numbers
     </h2>
 
+
     <div class="rule"></div>
 
+
     <p style="max-width:760px;">
+
         The study follows an empirical and descriptive research
         design using structured questionnaires and a five-point
         Likert scale. A total of 224 respondents were surveyed
         through convenience sampling.
+
     </p>
 
-    <div class="grid g4" style="margin-top:25px;">
+
+    <div
+        class="grid g4"
+        style="margin-top:25px;">
+
 
         <div class="card">
-            <div class="stat-num">224</div>
+
+            <div class="stat-num">
+                224
+            </div>
+
             <div class="stat-label">
                 Respondents included in the empirical study
             </div>
+
         </div>
 
+
         <div class="card">
-            <div class="stat-num">5</div>
+
+            <div class="stat-num">
+                5
+            </div>
+
             <div class="stat-label">
                 Point Likert scale used for attitudes and perceptions
             </div>
+
         </div>
 
+
         <div class="card">
-            <div class="stat-num">SPSS</div>
+
+            <div class="stat-num">
+                SPSS
+            </div>
+
             <div class="stat-label">
                 Statistical software used for data analysis
             </div>
+
         </div>
 
+
         <div class="card">
-            <div class="stat-num">7+</div>
-            <div class="stat-label">
-                Demographic and behavioural dimensions examined
+
+            <div class="stat-num">
+                224
             </div>
+
+            <div class="stat-label">
+                Completed responses forming the study sample
+            </div>
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     SLIDE 3 — METHODOLOGY
-===================================================== -->
 
-<section class="slide" id="slide-3">
+<!-- =======================================================
+     SLIDE 3 — METHODOLOGY
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-3">
 
     <div class="eyebrow">
         03 / 10 — Methodology
     </div>
 
+
     <div class="twocol">
+
 
         <div>
 
             <h2>
+
                 Empirical &amp;
+
                 <br>
+
                 Descriptive Design
+
             </h2>
+
 
             <div class="rule"></div>
 
-            <p style="max-width:560px;">
+
+            <p>
+
                 Structured questionnaires were administered using
                 convenience sampling. The questionnaire incorporated
                 a five-point Likert scale to measure attitudes and
                 perceptions concerning online reviews.
+
             </p>
 
-            <p style="max-width:560px;">
+
+            <p>
+
                 Secondary sources included peer-reviewed journals,
                 government reports and statistical databases.
                 The study examined demographic and behavioural
                 variables including age, gender, educational
                 qualification, occupation, purchasing frequency
                 and review-platform usage.
+
             </p>
 
         </div>
 
+
         <div class="grid">
 
+
             <div class="card">
-                <div class="stat-num">224</div>
+
+                <div class="stat-num">
+                    224
+                </div>
+
                 <div class="stat-label">
                     Total respondents
                 </div>
+
             </div>
 
+
             <div class="card">
-                <div class="stat-num">5-point</div>
+
+                <div class="stat-num">
+                    5-point
+                </div>
+
                 <div class="stat-label">
                     Likert-scale measurement
                 </div>
+
             </div>
 
+
             <div class="card">
-                <div class="stat-num">Empirical</div>
+
+                <div class="stat-num">
+                    Empirical
+                </div>
+
                 <div class="stat-label">
                     Primary research design
                 </div>
+
             </div>
+
 
         </div>
 
@@ -1050,204 +1334,389 @@ button:focus-visible{
 </section>
 
 
-<!-- =====================================================
-     SLIDE 4 — RESEARCH QUESTIONS / THEMES
-===================================================== -->
 
-<section class="slide" id="slide-4">
+<!-- =======================================================
+     SLIDE 4 — KEY AREAS
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-4">
 
     <div class="eyebrow">
         04 / 10 — Key Areas Examined
     </div>
 
+
     <h2>
         What the Study Examined
     </h2>
 
+
     <div class="rule"></div>
 
-    <ul class="formal" style="max-width:850px;">
+
+    <ul
+        class="formal"
+        style="max-width:850px;">
+
 
         <li>
-            <span class="num">01</span>
+
+            <span class="num">
+                01
+            </span>
+
             The factors that have the greatest influence on
             consumers' evaluation of online reviews.
+
         </li>
 
+
         <li>
-            <span class="num">02</span>
+
+            <span class="num">
+                02
+            </span>
+
             Whether online reviews help consumers make informed
             purchase decisions.
+
         </li>
 
+
         <li>
-            <span class="num">03</span>
+
+            <span class="num">
+                03
+            </span>
+
             Whether consumers consider online reviews an important
             source of product information.
+
         </li>
 
+
         <li>
-            <span class="num">04</span>
+
+            <span class="num">
+                04
+            </span>
+
             Whether consumers normally read online reviews before
             purchasing a product.
+
         </li>
 
+
         <li>
-            <span class="num">05</span>
+
+            <span class="num">
+                05
+            </span>
+
             How consumers perceive the credibility of online reviews.
+
         </li>
 
+
         <li>
-            <span class="num">06</span>
+
+            <span class="num">
+                06
+            </span>
+
             The level of trust consumers place in online reviews
             while making a purchase.
+
         </li>
+
 
     </ul>
 
 </section>
 
 
-<!-- =====================================================
-     SLIDE 5 — GRAPH 1
-===================================================== -->
 
-<section class="slide" id="slide-5">
+<!-- =======================================================
+     SLIDE 5 — GRAPH 1
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-5">
 
     <div class="eyebrow">
         05 / 10 — Results
     </div>
 
+
     <h2>
         Greatest Influence on Review Evaluation
     </h2>
 
+
     <p style="max-width:800px;">
+
         The research paper reports the strongest observed subgroup
         patterns for factors influencing consumers' evaluation of
         online reviews.
+
     </p>
+
 
     <div class="chart-shell">
 
+
         <div class="chart-title">
-            Reported strongest subgroup patterns
+            Factors Influencing Evaluation of Online Reviews
         </div>
 
-        <div class="chart">
 
-            <div class="bar-row">
+        <!-- EMBEDDED GRAPH IMAGE -->
 
-                <div class="bar-label">
-                    Age 46–50 —
-                    Verified buyer review
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+        <svg
+            class="graph-image"
+            viewBox="0 0 1000 430"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Factors influencing evaluation of online reviews">
 
 
-            <div class="bar-row">
-
-                <div class="bar-label">
-                    Female —
-                    Customer photos/videos
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:90%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    90%
-                </div>
-
-            </div>
+            <rect
+                width="1000"
+                height="430"
+                fill="#130f10"/>
 
 
-            <div class="bar-row">
+            <text
+                x="500"
+                y="35"
+                text-anchor="middle"
+                fill="#c9a15a"
+                font-family="Inter,Arial,sans-serif"
+                font-size="16">
 
-                <div class="bar-label">
-                    PG —
-                    Star ratings
-                </div>
+                Strongest reported subgroup patterns
 
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+            </text>
 
 
-            <div class="bar-row">
+            <!-- GRID -->
 
-                <div class="bar-label">
-                    Private employed —
-                    Photos/videos
-                </div>
+            <line
+                x1="310"
+                y1="70"
+                x2="310"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
+            <line
+                x1="510"
+                y1="70"
+                x2="510"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-value">
-                    100%
-                </div>
+            <line
+                x1="710"
+                y1="70"
+                x2="710"
+                y2="370"
+                stroke="#33282a"/>
 
-            </div>
+            <line
+                x1="910"
+                y1="70"
+                x2="910"
+                y2="370"
+                stroke="#33282a"/>
 
 
-            <div class="bar-row">
+            <!-- LABELS -->
 
-                <div class="bar-label">
-                    Weekly purchasers —
-                    Written reviews
-                </div>
+            <text
+                x="300"
+                y="95"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
+                Age 46–50 — Verified buyer review
 
-                <div class="bar-value">
-                    100%
-                </div>
+            </text>
 
-            </div>
 
-        </div>
+            <text
+                x="300"
+                y="155"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Female — Customer photos/videos
+
+            </text>
+
+
+            <text
+                x="300"
+                y="215"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                PG — Star ratings
+
+            </text>
+
+
+            <text
+                x="300"
+                y="275"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Private employed — Photos/videos
+
+            </text>
+
+
+            <text
+                x="300"
+                y="335"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Weekly purchasers — Written reviews
+
+            </text>
+
+
+            <!-- BARS -->
+
+            <rect
+                x="320"
+                y="78"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="138"
+                width="531"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="198"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="258"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="318"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <!-- VALUES -->
+
+            <text
+                x="925"
+                y="96"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="866"
+                y="156"
+                fill="#c9a15a"
+                font-size="13">
+
+                90%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="216"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="276"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="336"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+        </svg>
 
     </div>
+
 
     <div class="finding-note">
 
         <span>
-            <b>Result &amp; discussion:</b>
+
+            <b>
+                Result &amp; discussion:
+            </b>
+
             The reported patterns show that different consumer
             groups respond to different review cues. Verified-buyer
             reviews were particularly prominent for respondents aged
             46–50, while customer photos/videos were especially
             prominent among female respondents.
+
         </span>
 
     </div>
@@ -1255,147 +1724,278 @@ button:focus-visible{
 </section>
 
 
-<!-- =====================================================
-     SLIDE 6 — GRAPH 2
-===================================================== -->
 
-<section class="slide" id="slide-6">
+<!-- =======================================================
+     SLIDE 6 — GRAPH 2
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-6">
 
     <div class="eyebrow">
         06 / 10 — Results
     </div>
 
+
     <h2>
-        Do Online Reviews Help Consumers Make
-        Informed Purchase Decisions?
+        Online Reviews and Informed Decisions
     </h2>
 
+
     <p style="max-width:800px;">
+
         The paper reports strong subgroup patterns in responses to
-        the statement that online reviews help consumers make
-        informed purchase decisions.
+        whether online reviews help consumers make informed
+        purchase decisions.
+
     </p>
+
 
     <div class="chart-shell">
 
+
         <div class="chart-title">
-            Strongest reported response by subgroup
+            Reviews Help Consumers Make Informed Purchase Decisions
         </div>
 
-        <div class="chart">
 
-            <div class="bar-row">
+        <!-- EMBEDDED GRAPH IMAGE -->
 
-                <div class="bar-label">
-                    Female —
-                    Agree
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:90%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    90%
-                </div>
-
-            </div>
+        <svg
+            class="graph-image"
+            viewBox="0 0 1000 430"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Online reviews helping consumers make informed decisions">
 
 
-            <div class="bar-row">
-
-                <div class="bar-label">
-                    PG —
-                    Agree
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+            <rect
+                width="1000"
+                height="430"
+                fill="#130f10"/>
 
 
-            <div class="bar-row">
+            <text
+                x="500"
+                y="35"
+                text-anchor="middle"
+                fill="#c9a15a"
+                font-family="Inter,Arial,sans-serif"
+                font-size="16">
 
-                <div class="bar-label">
-                    Weekly purchasers —
-                    Agree
-                </div>
+                Strongest reported subgroup patterns
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+            </text>
 
 
-            <div class="bar-row">
+            <line
+                x1="310"
+                y1="70"
+                x2="310"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-label">
-                    Age 46–50 —
-                    Neutral
-                </div>
+            <line
+                x1="510"
+                y1="70"
+                x2="510"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
+            <line
+                x1="710"
+                y1="70"
+                x2="710"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-value">
-                    100%
-                </div>
+            <line
+                x1="910"
+                y1="70"
+                x2="910"
+                y2="370"
+                stroke="#33282a"/>
 
-            </div>
+
+            <text
+                x="300"
+                y="95"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Female — Agree
+
+            </text>
 
 
-            <div class="bar-row">
+            <text
+                x="300"
+                y="155"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-                <div class="bar-label">
-                    Private employed —
-                    Neutral
-                </div>
+                PG — Agree
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
+            </text>
 
-                <div class="bar-value">
-                    100%
-                </div>
 
-            </div>
+            <text
+                x="300"
+                y="215"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-        </div>
+                Weekly purchasers — Agree
+
+            </text>
+
+
+            <text
+                x="300"
+                y="275"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Age 46–50 — Neutral
+
+            </text>
+
+
+            <text
+                x="300"
+                y="335"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Private employed — Neutral
+
+            </text>
+
+
+            <rect
+                x="320"
+                y="78"
+                width="531"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="138"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="198"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="258"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="318"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <text
+                x="866"
+                y="96"
+                fill="#c9a15a"
+                font-size="13">
+
+                90%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="156"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="216"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="276"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="336"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+        </svg>
 
     </div>
+
 
     <div class="finding-note">
 
         <span>
-            <b>Result &amp; discussion:</b>
+
+            <b>
+                Result &amp; discussion:
+            </b>
+
             The results indicate a generally positive perception
             among several groups, particularly female, PG and weekly
             online purchasers. At the same time, some groups reported
             neutrality, showing that the usefulness of reviews is not
             perceived uniformly across all demographic categories.
+
         </span>
 
     </div>
@@ -1403,145 +2003,277 @@ button:focus-visible{
 </section>
 
 
-<!-- =====================================================
-     SLIDE 7 — GRAPH 3
-===================================================== -->
 
-<section class="slide" id="slide-7">
+<!-- =======================================================
+     SLIDE 7 — GRAPH 3
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-7">
 
     <div class="eyebrow">
         07 / 10 — Results
     </div>
 
+
     <h2>
         Reading Reviews Before Purchasing
     </h2>
 
+
     <p style="max-width:800px;">
+
         The study examined whether consumers normally read online
         reviews before purchasing a product.
+
     </p>
+
 
     <div class="chart-shell">
 
+
         <div class="chart-title">
-            Strongest reported agreement patterns
+            Consumers Reading Reviews Before Purchasing
         </div>
 
-        <div class="chart">
 
-            <div class="bar-row">
+        <!-- EMBEDDED GRAPH IMAGE -->
 
-                <div class="bar-label">
-                    Age 46–50 —
-                    Agree
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+        <svg
+            class="graph-image"
+            viewBox="0 0 1000 430"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Consumers reading reviews before purchasing">
 
 
-            <div class="bar-row">
-
-                <div class="bar-label">
-                    Female —
-                    Agree
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:94%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    94%
-                </div>
-
-            </div>
+            <rect
+                width="1000"
+                height="430"
+                fill="#130f10"/>
 
 
-            <div class="bar-row">
+            <text
+                x="500"
+                y="35"
+                text-anchor="middle"
+                fill="#c9a15a"
+                font-family="Inter,Arial,sans-serif"
+                font-size="16">
 
-                <div class="bar-label">
-                    PG —
-                    Strongly agree
-                </div>
+                Strongest reported agreement patterns
 
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+            </text>
 
 
-            <div class="bar-row">
+            <line
+                x1="310"
+                y1="70"
+                x2="310"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-label">
-                    Monthly purchasers —
-                    Agree
-                </div>
+            <line
+                x1="510"
+                y1="70"
+                x2="510"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
+            <line
+                x1="710"
+                y1="70"
+                x2="710"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-value">
-                    100%
-                </div>
+            <line
+                x1="910"
+                y1="70"
+                x2="910"
+                y2="370"
+                stroke="#33282a"/>
 
-            </div>
+
+            <text
+                x="300"
+                y="95"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Age 46–50 — Agree
+
+            </text>
 
 
-            <div class="bar-row">
+            <text
+                x="300"
+                y="155"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-                <div class="bar-label">
-                    Others platform —
-                    Strongly agree
-                </div>
+                Female — Agree
 
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
+            </text>
 
-                <div class="bar-value">
-                    100%
-                </div>
 
-            </div>
+            <text
+                x="300"
+                y="215"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-        </div>
+                PG — Strongly agree
+
+            </text>
+
+
+            <text
+                x="300"
+                y="275"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Monthly purchasers — Agree
+
+            </text>
+
+
+            <text
+                x="300"
+                y="335"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Other platform users — Strongly agree
+
+            </text>
+
+
+            <rect
+                x="320"
+                y="78"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="138"
+                width="554"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="198"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="258"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="318"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <text
+                x="925"
+                y="96"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="889"
+                y="156"
+                fill="#c9a15a"
+                font-size="13">
+
+                94%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="216"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="276"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="336"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+        </svg>
 
     </div>
+
 
     <div class="finding-note">
 
         <span>
-            <b>Result &amp; discussion:</b>
+
+            <b>
+                Result &amp; discussion:
+            </b>
+
             Reading reviews before purchasing appears to be a
             prominent behaviour in several reported subgroups.
             Female respondents showed 94% agreement, while the
             reported strongest patterns for age 46–50, PG respondents
             and monthly purchasers reached 100%.
+
         </span>
 
     </div>
@@ -1549,146 +2281,278 @@ button:focus-visible{
 </section>
 
 
-<!-- =====================================================
-     SLIDE 8 — GRAPH 4
-===================================================== -->
 
-<section class="slide" id="slide-8">
+<!-- =======================================================
+     SLIDE 8 — GRAPH 4
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-8">
 
     <div class="eyebrow">
         08 / 10 — Results
     </div>
 
+
     <h2>
         Perceived Credibility of Online Reviews
     </h2>
 
+
     <p style="max-width:800px;">
+
         Respondents were also asked how they generally perceive the
         credibility of online reviews.
+
     </p>
+
 
     <div class="chart-shell">
 
+
         <div class="chart-title">
-            Strongest reported subgroup patterns
+            Perceived Credibility of Online Reviews
         </div>
 
-        <div class="chart">
 
-            <div class="bar-row">
+        <!-- EMBEDDED GRAPH IMAGE -->
 
-                <div class="bar-label">
-                    Female —
-                    High credibility
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:90%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    90%
-                </div>
-
-            </div>
+        <svg
+            class="graph-image"
+            viewBox="0 0 1000 430"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Perceived credibility of online reviews">
 
 
-            <div class="bar-row">
-
-                <div class="bar-label">
-                    Private employed —
-                    High
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+            <rect
+                width="1000"
+                height="430"
+                fill="#130f10"/>
 
 
-            <div class="bar-row">
+            <text
+                x="500"
+                y="35"
+                text-anchor="middle"
+                fill="#c9a15a"
+                font-family="Inter,Arial,sans-serif"
+                font-size="16">
 
-                <div class="bar-label">
-                    Weekly purchasers —
-                    High
-                </div>
+                Strongest reported subgroup patterns
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+            </text>
 
 
-            <div class="bar-row">
+            <line
+                x1="310"
+                y1="70"
+                x2="310"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-label">
-                    Google Reviews —
-                    High
-                </div>
+            <line
+                x1="510"
+                y1="70"
+                x2="510"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
+            <line
+                x1="710"
+                y1="70"
+                x2="710"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-value">
-                    100%
-                </div>
+            <line
+                x1="910"
+                y1="70"
+                x2="910"
+                y2="370"
+                stroke="#33282a"/>
 
-            </div>
+
+            <text
+                x="300"
+                y="95"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Female — High credibility
+
+            </text>
 
 
-            <div class="bar-row">
+            <text
+                x="300"
+                y="155"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-                <div class="bar-label">
-                    Age 46–50 —
-                    Moderate
-                </div>
+                Private employed — High
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
+            </text>
 
-                <div class="bar-value">
-                    100%
-                </div>
 
-            </div>
+            <text
+                x="300"
+                y="215"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-        </div>
+                Weekly purchasers — High
+
+            </text>
+
+
+            <text
+                x="300"
+                y="275"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Google Reviews — High
+
+            </text>
+
+
+            <text
+                x="300"
+                y="335"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Age 46–50 — Moderate
+
+            </text>
+
+
+            <rect
+                x="320"
+                y="78"
+                width="531"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="138"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="198"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="258"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="318"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <text
+                x="866"
+                y="96"
+                fill="#c9a15a"
+                font-size="13">
+
+                90%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="156"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="216"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="276"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="336"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+        </svg>
 
     </div>
+
 
     <div class="finding-note">
 
         <span>
-            <b>Result &amp; discussion:</b>
+
+            <b>
+                Result &amp; discussion:
+            </b>
+
             The reported findings show variation in perceived
             credibility. Female respondents showed a strong
             high-credibility response, while private-employed,
             weekly-purchasing and Google Reviews groups showed
             reported 100% high-credibility patterns. The 46–50 age
             group was reported as moderate rather than high.
+
         </span>
 
     </div>
@@ -1696,146 +2560,278 @@ button:focus-visible{
 </section>
 
 
-<!-- =====================================================
-     SLIDE 9 — GRAPH 5
-===================================================== -->
 
-<section class="slide" id="slide-9">
+<!-- =======================================================
+     SLIDE 9 — GRAPH 5
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-9">
 
     <div class="eyebrow">
         09 / 10 — Results
     </div>
 
+
     <h2>
         Trust in Online Reviews During Purchase
     </h2>
 
+
     <p style="max-width:800px;">
+
         The final result theme considers the level of trust
         respondents place in online reviews while making a purchase.
+
     </p>
+
 
     <div class="chart-shell">
 
+
         <div class="chart-title">
-            Strongest reported subgroup patterns
+            Trust in Online Reviews While Purchasing
         </div>
 
-        <div class="chart">
 
-            <div class="bar-row">
+        <!-- EMBEDDED GRAPH IMAGE -->
 
-                <div class="bar-label">
-                    Female —
-                    Trust a little
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:90%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    90%
-                </div>
-
-            </div>
+        <svg
+            class="graph-image"
+            viewBox="0 0 1000 430"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Trust in online reviews while purchasing">
 
 
-            <div class="bar-row">
-
-                <div class="bar-label">
-                    Weekly purchasers —
-                    Trust
-                </div>
-
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+            <rect
+                width="1000"
+                height="430"
+                fill="#130f10"/>
 
 
-            <div class="bar-row">
+            <text
+                x="500"
+                y="35"
+                text-anchor="middle"
+                fill="#c9a15a"
+                font-family="Inter,Arial,sans-serif"
+                font-size="16">
 
-                <div class="bar-label">
-                    Age 46–50 —
-                    Neutral
-                </div>
+                Strongest reported subgroup patterns
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
-
-                <div class="bar-value">
-                    100%
-                </div>
-
-            </div>
+            </text>
 
 
-            <div class="bar-row">
+            <line
+                x1="310"
+                y1="70"
+                x2="310"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-label">
-                    Yet to be employed —
-                    Trust a little
-                </div>
+            <line
+                x1="510"
+                y1="70"
+                x2="510"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-track">
-                    <div class="bar gold"
-                         style="width:100%;">
-                    </div>
-                </div>
+            <line
+                x1="710"
+                y1="70"
+                x2="710"
+                y2="370"
+                stroke="#33282a"/>
 
-                <div class="bar-value">
-                    100%
-                </div>
+            <line
+                x1="910"
+                y1="70"
+                x2="910"
+                y2="370"
+                stroke="#33282a"/>
 
-            </div>
+
+            <text
+                x="300"
+                y="95"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Female — Trust a little
+
+            </text>
 
 
-            <div class="bar-row">
+            <text
+                x="300"
+                y="155"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-                <div class="bar-label">
-                    PG —
-                    Do not trust at all
-                </div>
+                Weekly purchasers — Trust
 
-                <div class="bar-track">
-                    <div class="bar"
-                         style="width:100%;">
-                    </div>
-                </div>
+            </text>
 
-                <div class="bar-value">
-                    100%
-                </div>
 
-            </div>
+            <text
+                x="300"
+                y="215"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
 
-        </div>
+                Age 46–50 — Neutral
+
+            </text>
+
+
+            <text
+                x="300"
+                y="275"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                Yet to be employed — Trust a little
+
+            </text>
+
+
+            <text
+                x="300"
+                y="335"
+                text-anchor="end"
+                fill="#efe6d8"
+                font-size="13">
+
+                PG — Do not trust at all
+
+            </text>
+
+
+            <rect
+                x="320"
+                y="78"
+                width="531"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="138"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="198"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <rect
+                x="320"
+                y="258"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#c9a15a"/>
+
+
+            <rect
+                x="320"
+                y="318"
+                width="590"
+                height="25"
+                rx="3"
+                fill="#8f1d24"/>
+
+
+            <text
+                x="866"
+                y="96"
+                fill="#c9a15a"
+                font-size="13">
+
+                90%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="156"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="216"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="276"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+
+            <text
+                x="925"
+                y="336"
+                fill="#c9a15a"
+                font-size="13">
+
+                100%
+
+            </text>
+
+        </svg>
 
     </div>
+
 
     <div class="finding-note">
 
         <span>
-            <b>Result &amp; discussion:</b>
+
+            <b>
+                Result &amp; discussion:
+            </b>
+
             Trust is more nuanced than simply reading reviews.
             Weekly purchasers showed the strongest reported trust
             pattern, while female and yet-to-be-employed groups
             showed a "trust a little" pattern. The PG subgroup had a
             contrasting reported pattern of "do not trust at all",
             demonstrating variation across educational groups.
+
         </span>
 
     </div>
@@ -1843,46 +2839,63 @@ button:focus-visible{
 </section>
 
 
-<!-- =====================================================
-     SLIDE 10 — CONCLUSION
-===================================================== -->
 
-<section class="slide" id="slide-10">
+<!-- =======================================================
+     SLIDE 10 — CONCLUSION
+======================================================= -->
+
+<section
+    class="slide"
+    id="slide-10">
 
     <div class="eyebrow">
         10 / 10 — Conclusion
     </div>
 
+
     <h2>
         Results &amp; Discussion
     </h2>
 
+
     <div class="rule"></div>
+
 
     <div class="discussion">
 
         <p>
+
             <b style="color:var(--parchment);">
                 Overall finding:
             </b>
+
             The empirical results show that online reviews play a
             meaningful role in consumer purchase-related behaviour,
             but the way consumers evaluate and trust reviews varies
             across demographic and behavioural groups.
+
         </p>
 
     </div>
 
-    <div class="grid g2" style="margin-top:20px;">
+
+    <div
+        class="grid g2"
+        style="margin-top:20px;">
+
 
         <div class="card">
 
-            <h3>Review evaluation</h3>
+            <h3>
+                Review evaluation
+            </h3>
 
             <p>
+
                 Verified-buyer reviews, customer photos/videos,
                 written reviews and star ratings each emerged as
                 important cues for different respondent groups.
+
             </p>
 
         </div>
@@ -1890,12 +2903,16 @@ button:focus-visible{
 
         <div class="card">
 
-            <h3>Purchase behaviour</h3>
+            <h3>
+                Purchase behaviour
+            </h3>
 
             <p>
+
                 Several subgroups reported agreement that online
                 reviews help with informed decisions and that they
                 normally read reviews before purchasing.
+
             </p>
 
         </div>
@@ -1903,12 +2920,16 @@ button:focus-visible{
 
         <div class="card">
 
-            <h3>Credibility</h3>
+            <h3>
+                Credibility
+            </h3>
 
             <p>
+
                 Perceived credibility varied considerably between
                 groups, ranging from moderate to high in the reported
                 subgroup patterns.
+
             </p>
 
         </div>
@@ -1916,39 +2937,52 @@ button:focus-visible{
 
         <div class="card">
 
-            <h3>Trust</h3>
+            <h3>
+                Trust
+            </h3>
 
             <p>
+
                 Trust was not uniform. Some groups reported trusting
                 reviews, while others showed neutral, limited-trust
                 or no-trust patterns.
+
             </p>
 
         </div>
 
+
     </div>
+
 
     <div class="finding-note">
 
         <span>
-            <b>Research implication:</b>
+
+            <b>
+                Research implication:
+            </b>
+
             Online reviews should therefore be understood as a
             multi-dimensional source of consumer information rather
             than as a single star-rating mechanism. The findings also
             need to be interpreted in light of the study's convenience
             sampling, geographic scope and self-report limitations.
+
         </span>
 
     </div>
 
 </section>
 
+
 </div>
 
 
-<!-- =====================================================
+
+<!-- =======================================================
      FOOTER
-===================================================== -->
+======================================================= -->
 
 <div class="foot">
 
@@ -1963,69 +2997,112 @@ button:focus-visible{
 </div>
 
 
-<!-- =====================================================
+
+<!-- =======================================================
      NAVIGATION HINT
-===================================================== -->
+======================================================= -->
 
 <div class="navigation-hint">
-    ← → &nbsp; / &nbsp; SWIPE &nbsp; / &nbsp; SPACE
+
+    ← →
+    &nbsp; / &nbsp;
+    SWIPE
+    &nbsp; / &nbsp;
+    SPACE
+
 </div>
 
 
-<!-- =====================================================
+
+<!-- =======================================================
      DOT NAVIGATION
-===================================================== -->
+======================================================= -->
 
-<div class="dots" id="dots">
+<div
+    class="dots"
+    id="dots">
 
-    <button class="dot active"
-            aria-label="Go to slide 1"
-            data-slide="0"></button>
 
-    <button class="dot"
-            aria-label="Go to slide 2"
-            data-slide="1"></button>
+    <button
+        class="dot active"
+        aria-label="Go to slide 1"
+        data-slide="0">
+    </button>
 
-    <button class="dot"
-            aria-label="Go to slide 3"
-            data-slide="2"></button>
 
-    <button class="dot"
-            aria-label="Go to slide 4"
-            data-slide="3"></button>
+    <button
+        class="dot"
+        aria-label="Go to slide 2"
+        data-slide="1">
+    </button>
 
-    <button class="dot"
-            aria-label="Go to slide 5"
-            data-slide="4"></button>
 
-    <button class="dot"
-            aria-label="Go to slide 6"
-            data-slide="5"></button>
+    <button
+        class="dot"
+        aria-label="Go to slide 3"
+        data-slide="2">
+    </button>
 
-    <button class="dot"
-            aria-label="Go to slide 7"
-            data-slide="6"></button>
 
-    <button class="dot"
-            aria-label="Go to slide 8"
-            data-slide="7"></button>
+    <button
+        class="dot"
+        aria-label="Go to slide 4"
+        data-slide="3">
+    </button>
 
-    <button class="dot"
-            aria-label="Go to slide 9"
-            data-slide="8"></button>
 
-    <button class="dot"
-            aria-label="Go to slide 10"
-            data-slide="9"></button>
+    <button
+        class="dot"
+        aria-label="Go to slide 5"
+        data-slide="4">
+    </button>
+
+
+    <button
+        class="dot"
+        aria-label="Go to slide 6"
+        data-slide="5">
+    </button>
+
+
+    <button
+        class="dot"
+        aria-label="Go to slide 7"
+        data-slide="6">
+    </button>
+
+
+    <button
+        class="dot"
+        aria-label="Go to slide 8"
+        data-slide="7">
+    </button>
+
+
+    <button
+        class="dot"
+        aria-label="Go to slide 9"
+        data-slide="8">
+    </button>
+
+
+    <button
+        class="dot"
+        aria-label="Go to slide 10"
+        data-slide="9">
+    </button>
+
 
 </div>
 
 
-<!-- =====================================================
-     BACK / NEXT BUTTONS
-===================================================== -->
+
+<!-- =======================================================
+     PREVIOUS / NEXT
+======================================================= -->
 
 <div class="navbtns">
+
 
     <button
         class="navbtn"
@@ -2050,103 +3127,210 @@ button:focus-visible{
 
     </button>
 
+
 </div>
 
 
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
 <script>
 
-/* =========================================================
-   PRESENTATION NAVIGATION
-========================================================= */
-
-(function(){
+(function () {
 
     "use strict";
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
     const slides =
         Array.from(
             document.querySelectorAll(".slide")
         );
 
+
     const dots =
         Array.from(
             document.querySelectorAll(".dot")
         );
 
+
     const prevBtn =
         document.getElementById("prevBtn");
+
 
     const nextBtn =
         document.getElementById("nextBtn");
 
+
     const progress =
         document.getElementById("progress");
 
+
     const counter =
         document.getElementById("slideCounter");
+
+
+    /* =====================================================
+       STATE
+    ===================================================== */
 
     let current = 0;
 
     let isAnimating = false;
 
+    let wheelLocked = false;
+
     const total = slides.length;
 
 
     /* =====================================================
-       UPDATE PRESENTATION
+       UPDATE CONTROLS
     ===================================================== */
 
-    function updateSlide(index, direction){
+    function updateControls() {
 
-        if(index < 0){
+
+        /* Previous */
+
+        prevBtn.disabled =
+            current === 0;
+
+
+        /* Next */
+
+        nextBtn.disabled =
+            current === total - 1;
+
+
+        /* Dots */
+
+        dots.forEach(
+            function (dot, index) {
+
+                dot.classList.toggle(
+                    "active",
+                    index === current
+                );
+
+            }
+        );
+
+
+        /* Progress */
+
+        const percentage =
+            ((current + 1) / total) * 100;
+
+
+        progress.style.width =
+            percentage + "%";
+
+
+        /* Counter */
+
+        counter.textContent =
+            String(current + 1).padStart(2, "0")
+            +
+            " / "
+            +
+            String(total).padStart(2, "0");
+
+    }
+
+
+    /* =====================================================
+       GO TO SLIDE
+    ===================================================== */
+
+    function goToSlide(index) {
+
+
+        if (index < 0) {
+
             index = 0;
+
         }
 
-        if(index >= total){
+
+        if (index >= total) {
+
             index = total - 1;
+
         }
 
-        if(index === current && slides[current].classList.contains("active")){
-            updateControls();
+
+        if (
+            index === current
+            ||
+            isAnimating
+        ) {
+
             return;
+
         }
 
-        if(isAnimating){
-            return;
-        }
 
         isAnimating = true;
 
-        const oldIndex = current;
 
-        current = index;
+        const previous =
+            current;
 
-        slides.forEach(function(slide, i){
 
-            slide.classList.remove(
-                "active",
-                "prev"
-            );
+        current =
+            index;
 
-            if(i === current){
-                slide.classList.add("active");
-            }
-            else if(i === oldIndex){
 
-                if(direction === "next"){
-                    slide.classList.add("prev");
+        slides.forEach(
+            function (slide, i) {
+
+                slide.classList.remove(
+                    "active",
+                    "prev"
+                );
+
+
+                if (i === current) {
+
+                    slide.classList.add(
+                        "active"
+                    );
+
                 }
-            }
 
-        });
+
+                else if (i === previous) {
+
+                    if (index > previous) {
+
+                        slide.classList.add(
+                            "prev"
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
 
         updateControls();
 
-        setTimeout(function(){
 
-            isAnimating = false;
+        setTimeout(
+            function () {
 
-        }, 480);
+                isAnimating = false;
+
+            },
+            480
+        );
 
     }
 
@@ -2155,13 +3339,12 @@ button:focus-visible{
        NEXT
     ===================================================== */
 
-    function nextSlide(){
+    function nextSlide() {
 
-        if(current < total - 1){
+        if (current < total - 1) {
 
-            updateSlide(
-                current + 1,
-                "next"
+            goToSlide(
+                current + 1
             );
 
         }
@@ -2173,72 +3356,15 @@ button:focus-visible{
        PREVIOUS
     ===================================================== */
 
-    function previousSlide(){
+    function previousSlide() {
 
-        if(current > 0){
+        if (current > 0) {
 
-            updateSlide(
-                current - 1,
-                "prev"
+            goToSlide(
+                current - 1
             );
 
         }
-
-    }
-
-
-    /* =====================================================
-       GO TO SLIDE
-    ===================================================== */
-
-    function goToSlide(index){
-
-        if(index === current){
-            return;
-        }
-
-        updateSlide(
-            index,
-            index > current ? "next" : "prev"
-        );
-
-    }
-
-
-    /* =====================================================
-       UPDATE BUTTONS / DOTS / PROGRESS
-    ===================================================== */
-
-    function updateControls(){
-
-        prevBtn.disabled =
-            current === 0;
-
-        nextBtn.disabled =
-            current === total - 1;
-
-
-        dots.forEach(function(dot, i){
-
-            dot.classList.toggle(
-                "active",
-                i === current
-            );
-
-        });
-
-
-        const percentage =
-            ((current + 1) / total) * 100;
-
-        progress.style.width =
-            percentage + "%";
-
-
-        counter.textContent =
-            String(current + 1).padStart(2, "0")
-            + " / "
-            + String(total).padStart(2, "0");
 
     }
 
@@ -2252,6 +3378,7 @@ button:focus-visible{
         previousSlide
     );
 
+
     nextBtn.addEventListener(
         "click",
         nextSlide
@@ -2262,38 +3389,44 @@ button:focus-visible{
        DOT EVENTS
     ===================================================== */
 
-    dots.forEach(function(dot){
+    dots.forEach(
+        function (dot) {
 
-        dot.addEventListener(
-            "click",
-            function(){
+            dot.addEventListener(
+                "click",
+                function () {
 
-                const index =
-                    Number(
-                        dot.dataset.slide
+                    goToSlide(
+                        Number(
+                            dot.dataset.slide
+                        )
                     );
 
-                goToSlide(index);
+                }
+            );
 
-            }
-        );
-
-    });
+        }
+    );
 
 
     /* =====================================================
-       KEYBOARD NAVIGATION
+       KEYBOARD
     ===================================================== */
 
     document.addEventListener(
         "keydown",
-        function(event){
+        function (event) {
 
-            switch(event.key){
+
+            switch (event.key) {
+
 
                 case "ArrowRight":
+
                 case "ArrowDown":
+
                 case "PageDown":
+
                 case " ":
 
                     event.preventDefault();
@@ -2304,7 +3437,9 @@ button:focus-visible{
 
 
                 case "ArrowLeft":
+
                 case "ArrowUp":
+
                 case "PageUp":
 
                     event.preventDefault();
@@ -2327,7 +3462,9 @@ button:focus-visible{
 
                     event.preventDefault();
 
-                    goToSlide(total - 1);
+                    goToSlide(
+                        total - 1
+                    );
 
                     break;
 
@@ -2338,116 +3475,150 @@ button:focus-visible{
 
 
     /* =====================================================
-       MOUSE WHEEL NAVIGATION
+       MOUSE WHEEL
     ===================================================== */
-
-    let wheelLocked = false;
 
     document.addEventListener(
         "wheel",
-        function(event){
+        function (event) {
 
-            if(wheelLocked){
+
+            if (wheelLocked) {
+
                 return;
+
             }
+
 
             wheelLocked = true;
 
-            if(event.deltaY > 0){
+
+            if (event.deltaY > 0) {
 
                 nextSlide();
 
             }
-            else if(event.deltaY < 0){
+
+            else if (event.deltaY < 0) {
 
                 previousSlide();
 
             }
 
+
             setTimeout(
-                function(){
+                function () {
+
                     wheelLocked = false;
+
                 },
                 650
             );
 
         },
         {
-            passive:true
+            passive: true
         }
     );
 
 
     /* =====================================================
-       TOUCH / SWIPE NAVIGATION
+       TOUCH / SWIPE
     ===================================================== */
 
     let touchStartX = 0;
-    let touchStartY = 0;
 
-    let touchEndX = 0;
-    let touchEndY = 0;
+    let touchStartY = 0;
 
 
     document.addEventListener(
         "touchstart",
-        function(event){
+        function (event) {
 
-            if(event.touches.length !== 1){
+
+            if (
+                event.touches.length !== 1
+            ) {
+
                 return;
+
             }
+
 
             touchStartX =
                 event.touches[0].clientX;
+
 
             touchStartY =
                 event.touches[0].clientY;
 
         },
         {
-            passive:true
+            passive: true
         }
     );
 
 
     document.addEventListener(
         "touchend",
-        function(event){
+        function (event) {
 
-            if(event.changedTouches.length !== 1){
+
+            if (
+                event.changedTouches.length !== 1
+            ) {
+
                 return;
+
             }
 
-            touchEndX =
+
+            const touchEndX =
                 event.changedTouches[0].clientX;
 
-            touchEndY =
+
+            const touchEndY =
                 event.changedTouches[0].clientY;
+
 
             const dx =
                 touchEndX - touchStartX;
+
 
             const dy =
                 touchEndY - touchStartY;
 
 
-            /* Ignore vertical scrolling gestures */
+            /* Ignore small movements */
 
-            if(Math.abs(dx) < 50){
+            if (
+                Math.abs(dx) < 50
+            ) {
+
                 return;
+
             }
 
-            if(Math.abs(dx) < Math.abs(dy)){
+
+            /* Ignore vertical scrolling */
+
+            if (
+                Math.abs(dx) <
+                Math.abs(dy)
+            ) {
+
                 return;
+
             }
 
 
-            if(dx < 0){
+            if (dx < 0) {
 
                 nextSlide();
 
             }
-            else{
+
+            else {
 
                 previousSlide();
 
@@ -2455,7 +3626,7 @@ button:focus-visible{
 
         },
         {
-            passive:true
+            passive: true
         }
     );
 
@@ -2469,6 +3640,7 @@ button:focus-visible{
 })();
 
 </script>
+
 
 </body>
 </html>
